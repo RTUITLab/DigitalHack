@@ -19,117 +19,75 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Helvetica',
           textTheme: TextTheme(body1: TextStyle(color: Colors.white))),
       home: Scaffold(
-        body: Container(
-            decoration: gradientDecoration,
-            // child: MainPage(),
-            child: PasswordAttackPage(Person(phoneMumber: '+7 800 555 35 35', name: 'Alice')))
-        // alignment: Alignment(0.0, 1.0),
-      ),
+          body: Container(
+        decoration: gradientDecoration,
+        child: MainPage(),
+      )
+          ),
     );
   }
 }
-
-Widget flexcolumnt()
-{
-  return Column(
-              children: <Widget>[
-                Flexible(
-                  flex: 4,
-                  child: Container(),
-                ),
-                Flexible(
-                    flex: 6,
-                    child: Center(
-                      child: LogoElement(),
-                    )),
-                Flexible(
-                  flex: 4,
-                  child: Container(),
-                ),
-                Flexible(
-                  flex: 2,
-                  child: RaisedButton(
-                    onPressed: () => print("button pressed")
-                  ),
-                )
-              ],
-            );
-}
-
 
 class MainPage extends StatelessWidget {
+  final String imagePath = 'assets/SafeHack_Logo.svg';
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Column(
-      children: <Widget>[LogoElement()],
-      mainAxisAlignment: MainAxisAlignment.center,
-    ));
-  }
-}
-
-class LogoElement extends StatelessWidget {
-  final String imagePath = 'assets/shield_1.png';
-  @override
-  Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: <Widget>[
-        Row(
-          children: [
-            Image.asset(
-              imagePath,
-              height: 200,
+        Align(
+          child: SvgPicture.asset(
+            imagePath,
+            height: 240,
+          ),
+          alignment: Alignment(0, -0.2),
+        ),
+        Align(
+          child: RaisedButton(
+            child: Container(
+              child: Text("Познакомимся?", style: TextStyle(fontSize: 40)),
+              margin: EdgeInsets.only(bottom: 5, top: 5, left: 20, right: 20),
             ),
-            Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Safe',
-                  style: TextStyle(fontSize: 50),
-                ),
-                Text(
-                  'Hack',
-                  style: TextStyle(fontSize: 50),
-                )
-              ],
-            )
-            // Row(
-            //   // children: <Widget>[Text('sdsd')],
-            // )
-          ],
-          mainAxisAlignment: MainAxisAlignment.center,
-        )
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          PasswordAttackPage(Person(name: 'Alice'))));
+            },
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+          ),
+          alignment: Alignment(0, 0.75),
+        ),
+        Align(
+          child: FlatButton(
+            child: Text('Уже есть аккаунт? Войти',
+                style: TextStyle(fontSize: 27, color: Colors.white)),
+            onPressed: () {
+              print("Yee");
+            },
+            
+          ),
+          alignment: Alignment(0, 0.9),
+        ),
+        qUElement(-0.2, 0.4, 70),
+        qUElement(-0.5, -0.7, 50),
+        qUElement(0.5, -0.87, 65),
+        qUElement(0.8, -0.47, 25),
+        qUElement(0.8, 0.2, 90),
+        qUElement(-0.8, -0.1, 30),
       ],
-      mainAxisAlignment: MainAxisAlignment.center,
     );
+  }
 
-    return Column(
-      children: <Widget>[
-        Row(
-          children: <Widget>[
-            SvgPicture.asset(
-              imagePath,
-              height: 200,
-            ),
-            Column(
-              children: <Widget>[
-                Text('Safe',
-                    style: TextStyle(
-                      fontSize: 50,
-                      fontFamily: 'Helvetica-Bold',
-                    )),
-                Text('Hack',
-                    style: TextStyle(
-                      fontSize: 50,
-                      fontFamily: 'Helvetica-Bold',
-                    ))
-              ],
-            )
-          ],
-          mainAxisAlignment: MainAxisAlignment.center,
-        )
-      ],
-      mainAxisAlignment: MainAxisAlignment.center,
+  Widget qUElement(double a, double b, double size) {
+    return Align(
+      child: Text('?',
+          style: TextStyle(
+              fontSize: size,
+              fontFamily: 'Helvetica-Bold',
+              color: Color.fromARGB(100, 255, 255, 255))),
+      alignment: Alignment(a, b),
     );
   }
 }
