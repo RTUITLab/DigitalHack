@@ -14,86 +14,76 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           fontFamily: 'Helvetica',
           textTheme: TextTheme(body1: TextStyle(color: Colors.white))),
-      home: HelloPage(),
+      home: BacgroundGradiend(),
     );
   }
 }
 
-class HelloPage extends StatelessWidget {
+class BacgroundGradiend extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+    body: Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          stops: [0.1, 0.5, 0.7, 0.9],
+          colors: [
+            Colors.green[200],
+            Colors.green[300],
+            Colors.green[400],
+            Colors.green[500],
+          ],
+        ),
+      ),
+      child: MainPage(),
+    
+    alignment: Alignment(0.0, 1.0),),
+    );
+  }
+}
+
+class MainPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: LogoElement(),
+    );
+  }
+}
+
+class LogoElement extends StatelessWidget
+{
   final String imagePath = 'assets/SafeHack_Logo.svg';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            stops: [0.1, 0.5, 0.7, 0.9],
-            colors: [
-              Colors.green[200],
-              Colors.green[300],
-              Colors.green[400],
-              Colors.green[500],
-            ],
-          ),
-        ),
-        child: Column (
+    return Column(
         children: <Widget>[
-          Center(child: SvgPicture.asset(imagePath, height: 100,)),
-          Text(
-            'Привет',
-            style: TextStyle(
-              fontSize: 30,
-            ),
+          Row(children: <Widget>[ SvgPicture.asset(
+            imagePath,
+            height: 200,
           ),
+          Column(children: <Widget>[
+             Text(
+            'Safe',
+            style: TextStyle(
+              fontSize: 50,
+              fontFamily: 'Helvetica-Bold',
+            )
+          ),
+          Text(
+            'Hack',
+            style: TextStyle(
+              fontSize: 50,
+              fontFamily: 'Helvetica-Bold',
+            )
+          )
+          ],)
+         ],
+          mainAxisAlignment: MainAxisAlignment.center,)
         ],
-        ),
-      ),
-    );
+        mainAxisAlignment: MainAxisAlignment.center,
+      );
   }
-}
-
-class RandomWordsState extends State<RandomWords> {
-  final _suggestions = <WordPair>[];
-  final _biggerFont = const TextStyle(fontSize: 18.0);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Startup Name Generator')),
-      body: _buildSuggestions(),
-      // bottomSheet: Icon(Icons.star),
-    );
-  }
-
-  Widget _buildSuggestions() {
-    return ListView.builder(
-      padding: const EdgeInsets.all(16.0),
-      itemBuilder: (context, i) {
-        if (i.isOdd) return Divider();
-
-        final index = i ~/ 2;
-        if (index >= _suggestions.length) {
-          _suggestions.addAll(generateWordPairs().take(10));
-        }
-        return _buildRow(_suggestions[index]);
-      },
-    );
-  }
-
-  Widget _buildRow(WordPair pair) {
-    final String imagePath = 'assets/SafeHack_Logo.svg';
-    return ListTile(
-        title: Text(
-          pair.asPascalCase,
-          style: _biggerFont,
-        ),
-        trailing: SvgPicture.asset(imagePath, semanticsLabel: 'Acme Logo', fit: BoxFit.contain,));
-  }
-}
-
-class RandomWords extends StatefulWidget {
-  @override
-  RandomWordsState createState() => RandomWordsState();
 }
