@@ -1,7 +1,127 @@
+
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hello_world/tests/icons.dart';
+import 'package:intro_views_flutter/Models/page_view_model.dart';
+import 'package:intro_views_flutter/intro_views_flutter.dart';
+
+/// This is the main method of app, from here execution starts.
+void main() => runApp(App());
+
+/// App widget class
+
+class App extends StatelessWidget {
+  //making list of pages needed to pass in IntroViewsFlutter constructor.
+  final pages = [
+    PageViewModel(
+        pageColor: const Color(0xFF03A9F4),
+        // iconImageAssetPath: 'assets/air-hostess.png',
+        bubble: Image.asset('assets/air-hostess.png'),
+        
+        
+
+        body: Text(
+          'Проходите уровни и узновайте что-то новое о кибербезопасности каждый день',
+        ),
+        title: Text(''),
+        textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
+        mainImage: Image.asset(
+          'assets/shield.png',
+          height: 285.0,
+          width: 285.0,
+          alignment: Alignment.center,
+        )),
+    PageViewModel(
+      pageColor: const Color(0xFF8BC34A),
+      iconImageAssetPath: 'assets/waiter.png',
+      body: Text(
+        'We  work  for  the  comfort ,  enjoy  your  stay  at  our  beautiful  hotels',
+      ),
+      title: Text('Hotels'),
+      mainImage: Image.asset(
+        'assets/hotel.png',
+        height: 285.0,
+        width: 285.0,
+        alignment: Alignment.center,
+      ),
+      textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
+    ),
+    PageViewModel(
+      pageColor: const Color(0xFF607D8B),
+      iconImageAssetPath: 'assets/taxi-driver.png',
+      body: Text(
+        'Easy  cab  booking  at  your  doorstep  with  cashless  payment  system',
+      ),
+      title: Text('Cabs'),
+      mainImage: Image.asset(
+        'assets/taxi.png',
+        height: 285.0,
+        width: 285.0,
+        alignment: Alignment.center,
+      ),
+      textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
+    ),
+    PageViewModel(
+      pageColor: const Color(0xFF607D8B),
+      iconImageAssetPath: 'assets/taxi-driver.png',
+      body: Text(
+        'Easy  cab  booking  at  your  doorstep  with  cashless  payment  system',
+      ),
+      title: Text('Cabs'),
+      mainImage: Image.asset(
+        'assets/taxi.png',
+        height: 285.0,
+        width: 285.0,
+        alignment: Alignment.center,
+      ),
+      textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
+    ),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'IntroViews Flutter', //title of app
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ), //ThemeData
+      home: Builder(
+        builder: (context) => IntroViewsFlutter(
+          pages,
+          onTapDoneButton: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomePage(),
+              ), //MaterialPageRoute
+            );
+          },
+          pageButtonTextStyles: TextStyle(
+            color: Colors.white,
+            fontSize: 18.0,
+          ),
+        ), //IntroViewsFlutter
+      ), //Builder
+    ); //Material App
+  }
+}
+
+/// Home Page of our example app.
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
+      ), //Appbar
+      body: Center(
+        child: Text("This is the home page of the app"),
+      ), //Center
+    ); //Scaffold
+  }
+}
+
+/* import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,53 +130,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Startup name generator',
-      // home: RandomWords(),
-      home: ImagesPage(),
-    );
-  }
-}
-
-class RandomWordsState extends State<RandomWords> {
-  final _suggestions = <WordPair>[];
-  final _biggerFont = const TextStyle(fontSize: 18.0);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Startup Name Generator')),
-      body: _buildSuggestions(),
-      // bottomSheet: Icon(Icons.star),
-    );
-  }
-
-  Widget _buildSuggestions() {
-    return ListView.builder(
-      padding: const EdgeInsets.all(16.0),
-      itemBuilder: (context, i) {
-        if (i.isOdd) return Divider();
-
-        final index = i ~/ 2;
-        if (index >= _suggestions.length) {
-          _suggestions.addAll(generateWordPairs().take(10));
-        }
-        return _buildRow(_suggestions[index]);
-      },
-    );
-  }
-
-  Widget _buildRow(WordPair pair) {
-    final String imagePath = 'assets/SafeHack_Logo.svg';
-    return ListTile(
-        title: Text(
-          pair.asPascalCase,
-          style: _biggerFont,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Just a list"),
         ),
-        trailing: SvgPicture.asset(imagePath, semanticsLabel: 'Acme Logo', fit: BoxFit.contain,));
+       body: Card(child: Column(children: <Widget>[
+          Image.asset('assets/pic.jpg'),
+          Text('This is Security'),  
+        ],),)
+      ),
+    );
   }
 }
-
-class RandomWords extends StatefulWidget {
-  @override
-  RandomWordsState createState() => RandomWordsState();
-}
+ */
