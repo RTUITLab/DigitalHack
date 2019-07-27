@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hello_world/tests/icons.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,6 +20,7 @@ class MyApp extends StatelessWidget {
 }
 
 class HelloPage extends StatelessWidget {
+  final String imagePath = 'assets/SafeHack_Logo.svg';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,13 +38,16 @@ class HelloPage extends StatelessWidget {
             ],
           ),
         ),
-        child: Center(
-          child: Text(
+        child: Column (
+        children: <Widget>[
+          Center(child: SvgPicture.asset(imagePath, height: 100,)),
+          Text(
             'Привет',
             style: TextStyle(
               fontSize: 30,
             ),
           ),
+        ],
         ),
       ),
     );
@@ -57,13 +63,6 @@ class RandomWordsState extends State<RandomWords> {
     return Scaffold(
       appBar: AppBar(title: Text('Startup Name Generator')),
       body: _buildSuggestions(),
-      persistentFooterButtons: <Widget>[
-        Icon(Icons.star_border),
-        IconButton(
-          icon: Icon(Icons.link),
-          tooltip: "hello",
-        )
-      ],
       // bottomSheet: Icon(Icons.star),
     );
   }
@@ -84,16 +83,13 @@ class RandomWordsState extends State<RandomWords> {
   }
 
   Widget _buildRow(WordPair pair) {
+    final String imagePath = 'assets/SafeHack_Logo.svg';
     return ListTile(
-      title: Text(
-        pair.asPascalCase,
-        style: _biggerFont,
-      ),
-      trailing: Icon(
-        Icons.star,
-        color: Colors.red,
-      ),
-    );
+        title: Text(
+          pair.asPascalCase,
+          style: _biggerFont,
+        ),
+        trailing: SvgPicture.asset(imagePath, semanticsLabel: 'Acme Logo', fit: BoxFit.contain,));
   }
 }
 
