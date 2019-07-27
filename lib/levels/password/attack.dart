@@ -22,30 +22,32 @@ class PasswordAttackState extends State<PasswordAttackPage> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: () {
-          //Navigator.pop(context);
-        },
-        child: Container(
-            padding: const EdgeInsets.only(top: 30),
-            decoration: gradientDecoration,
-            child: _page()));
+    return Scaffold(
+      // type: MaterialType.card,
+      body: Container(
+          padding: const EdgeInsets.only(top: 30),
+          decoration: gradientDecoration,
+          child: _page(context)),
+    );
     //  Container(decoration: gradientDecoration, child: _userInfo()));
   }
 
-  Widget _page() {
+  Widget _page(BuildContext context) {
     return ListView(
-      children: <Widget>[_header(), _userInfo(), _taskText(), _lexemsForm()],
+      children: <Widget>[_header(context), _userInfo(), _taskText(), _lexemsForm()],
     );
   }
 
-  Widget _header() {
+  Widget _header(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        SvgPicture.asset(
-          backPic,
-          width: 63,
+        GestureDetector(
+          onTap: () => Navigator.pop(context),
+          child: SvgPicture.asset(
+            backPic,
+            width: 63,
+          ),
         ),
         Text(
           'Уровень1. Нападение\n Пароли',
@@ -142,7 +144,10 @@ class PasswordAttackState extends State<PasswordAttackPage> {
           ],
         ),
         RaisedButton(
-          child: Text('Запустить утилиту', style: TextStyle(color: Colors.white),),
+          child: Text(
+            'Запустить утилиту',
+            style: TextStyle(color: Colors.white),
+          ),
           onPressed: () => print('123'),
           shape: StadiumBorder(),
           color: Colors.blue,
