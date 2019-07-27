@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hello_world/tests/icons.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,24 +11,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Startup name generator',
-      home: RandomWords(),
+      // home: RandomWords(),
+      home: ImagesPage(),
     );
   }
 }
 
 class RandomWordsState extends State<RandomWords> {
-
   final _suggestions = <WordPair>[];
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar (
-        title: Text('Startup Name Generator')),
-        body: _buildSuggestions(),
-        persistentFooterButtons: <Widget>[Icon(Icons.star_border), IconButton(icon: Icon(Icons.link), tooltip: "hello",)],
-        // bottomSheet: Icon(Icons.star),
+      appBar: AppBar(title: Text('Startup Name Generator')),
+      body: _buildSuggestions(),
+      // bottomSheet: Icon(Icons.star),
     );
   }
 
@@ -36,7 +36,7 @@ class RandomWordsState extends State<RandomWords> {
       itemBuilder: (context, i) {
         if (i.isOdd) return Divider();
 
-        final index = i ~/2;
+        final index = i ~/ 2;
         if (index >= _suggestions.length) {
           _suggestions.addAll(generateWordPairs().take(10));
         }
@@ -46,16 +46,13 @@ class RandomWordsState extends State<RandomWords> {
   }
 
   Widget _buildRow(WordPair pair) {
-    return ListTile (
-      title: Text (
-        pair.asPascalCase,
-        style: _biggerFont,
-      ),
-      trailing: Icon (
-        Icons.star,
-        color: Colors.red,
-      ),
-    );
+    final String imagePath = 'assets/SafeHack_Logo.svg';
+    return ListTile(
+        title: Text(
+          pair.asPascalCase,
+          style: _biggerFont,
+        ),
+        trailing: SvgPicture.asset(imagePath, semanticsLabel: 'Acme Logo', fit: BoxFit.contain,));
   }
 }
 
