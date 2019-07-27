@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hello_world/levels/password/attack.dart';
 import 'package:hello_world/tests/icons.dart';
+
+import 'general/gradientdecoration.dart';
+import 'models/person.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,6 +19,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Helvetica',
           textTheme: TextTheme(body1: TextStyle(color: Colors.white))),
       home: HelloPage(),
+      // home: PasswordAttackPage(Person (name: 'Alice')),
     );
   }
 }
@@ -25,19 +30,7 @@ class HelloPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            stops: [0.1, 0.5, 0.7, 0.9],
-            colors: [
-              Colors.green[200],
-              Colors.green[300],
-              Colors.green[400],
-              Colors.green[500],
-            ],
-          ),
-        ),
+        decoration: gradientDecoration,
         child: Column (
         children: <Widget>[
           Center(child: SvgPicture.asset(imagePath, height: 100,)),
