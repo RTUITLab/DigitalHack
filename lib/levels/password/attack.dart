@@ -24,40 +24,129 @@ class PasswordAttackState extends State<PasswordAttackPage> {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          Navigator.pop(context);
+          //Navigator.pop(context);
         },
         child: Container(
-            padding: const EdgeInsets.only(top: 30, left: 10),
+            padding: const EdgeInsets.only(top: 30),
             decoration: gradientDecoration,
             child: _page()));
     //  Container(decoration: gradientDecoration, child: _userInfo()));
   }
 
   Widget _page() {
-    return Column (
+    return ListView(
+      children: <Widget>[_header(), _userInfo(), _taskText(), _lexemsForm()],
+    );
+  }
+
+  Widget _header() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Row(children: <Widget>[
-          SvgPicture.asset(backPic, width: 90,),
-          Text('middle'),
-          SvgPicture.asset(lightBulpPic, width: 70,)
-        ],)
+        SvgPicture.asset(
+          backPic,
+          width: 63,
+        ),
+        Text(
+          'Уровень1. Нападение\n Пароли',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 24, fontFamily: fontFamilyBold),
+        ),
+        SvgPicture.asset(
+          lightBulpPic,
+          width: 70,
+        )
       ],
     );
   }
 
   Widget _userInfo() {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        SvgPicture.asset(girlPic, width: 130,),
-        Container(
-            padding: const EdgeInsets.only(left: 10),
-            // margin: const EdgeInsets.only(top: 400),
-            child: Column(
+        SvgPicture.asset(
+          girlPic,
+          width: 200,
+        ),
+        Column(
+          children: <Widget>[
+            Text(
+              'Аня Иванова',
+              style: TextStyle(fontSize: 17, fontFamily: fontFamilyBold),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              '07 июля 2002 \nНа своей странице \nуказала, что любит\nфотографировать,\nведет блог в Instagram\nпод ником freya.',
+              style: TextStyle(fontSize: 17, fontFamily: fontFamilyLight),
+              textAlign: TextAlign.center,
+            )
+          ],
+        )
+      ],
+    );
+  }
+
+  Widget _taskText() {
+    return Container(
+      alignment: Alignment.center,
+      color: Colors.green[800],
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Text(
+            'Создайте словарь для brute-force\nутилиты, чтобы с её помощью\nподобрать пароль к странице Ани',
+            style: TextStyle(fontSize: 17, fontFamily: fontFamilyBold),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(
+            width: double.infinity,
+            child: Container(
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(attackedPerson.name),
+                Flexible(
+                  child: SvgPicture.asset(
+                    lightBulpPic,
+                    width: 20,
+                  ),
+                ),
+                Text(
+                  'Аня не подкована в кибербезопасности и \nне знает, что нельзя использовать в\nпаролях открытую информацию, такую как\nфамилия, дата рождения, никнеймы и т.п. ',
+                  style: TextStyle(fontSize: 17, fontFamily: fontFamilyLight),
+                  textAlign: TextAlign.justify,
+                ),
               ],
-            ))
+            )),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _lexemsForm() {
+    return Column(
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            Flexible(
+              child: TextField(
+                decoration: InputDecoration(),
+              ),
+            ),
+            RaisedButton(
+              child: Text('Добавить'),
+              color: Colors.yellow,
+              shape: StadiumBorder(),
+              onPressed: () => print('12345'),
+            )
+          ],
+        ),
+        RaisedButton(
+          child: Text('Запустить утилиту', style: TextStyle(color: Colors.white),),
+          onPressed: () => print('123'),
+          shape: StadiumBorder(),
+          color: Colors.blue,
+        )
       ],
     );
   }
