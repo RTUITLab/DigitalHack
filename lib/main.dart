@@ -14,25 +14,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'SafeHack',
-      theme: ThemeData(
-          fontFamily: 'Helvetica',
-          textTheme: TextTheme(body1: TextStyle(color: Colors.white))),
-      home: BacgroundGradiend(),
-    );
-  }
-}
-
-class BacgroundGradiend extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: gradientDecoration,
-      child: MainPage(),
-    
-    alignment: Alignment(0.0, 1.0),),
-    );
+        title: 'SafeHack',
+        theme: ThemeData(
+            fontFamily: 'Helvetica',
+            textTheme: TextTheme(body1: TextStyle(color: Colors.white))),
+        home: Scaffold(
+          body: Container(
+            decoration: gradientDecoration,
+            child: MainPage(),
+            alignment: Alignment(0.0, 1.0),
+          ),
+        ));
   }
 }
 
@@ -40,42 +32,56 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: LogoElement(),
-    );
+        child: Column(
+      children: <Widget>[
+        LogoElement(),
+        RaisedButton(
+          child: Text("TEST GO"),
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        PasswordAttackPage(Person(name: 'Alice'))));
+          },
+        )
+      ],
+      mainAxisAlignment: MainAxisAlignment.center,
+    ));
   }
 }
 
-class LogoElement extends StatelessWidget
-{
+class LogoElement extends StatelessWidget {
   final String imagePath = 'assets/SafeHack_Logo.svg';
   @override
   Widget build(BuildContext context) {
     return Column(
-        children: <Widget>[
-          Row(children: <Widget>[ SvgPicture.asset(
-            imagePath,
-            height: 200,
-          ),
-          Column(children: <Widget>[
-             Text(
-            'Safe',
-            style: TextStyle(
-              fontSize: 50,
-              fontFamily: 'Helvetica-Bold',
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            SvgPicture.asset(
+              imagePath,
+              height: 200,
+            ),
+            Column(
+              children: <Widget>[
+                Text('Safe',
+                    style: TextStyle(
+                      fontSize: 50,
+                      fontFamily: 'Helvetica-Bold',
+                    )),
+                Text('Hack',
+                    style: TextStyle(
+                      fontSize: 50,
+                      fontFamily: 'Helvetica-Bold',
+                    ))
+              ],
             )
-          ),
-          Text(
-            'Hack',
-            style: TextStyle(
-              fontSize: 50,
-              fontFamily: 'Helvetica-Bold',
-            )
-          )
-          ],)
-         ],
-          mainAxisAlignment: MainAxisAlignment.center,)
-        ],
-        mainAxisAlignment: MainAxisAlignment.center,
-      );
+          ],
+          mainAxisAlignment: MainAxisAlignment.center,
+        )
+      ],
+      mainAxisAlignment: MainAxisAlignment.center,
+    );
   }
 }
