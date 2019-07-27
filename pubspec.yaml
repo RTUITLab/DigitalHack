@@ -77,4 +77,4 @@ flutter:
         - asset: fonts/Helvetica-Light.ttf
     - family: Helvetica-Bold
       fonts:
-        - asset: fonts/Helvetica-Bold.ttf
+        - asset: fonts/HelveticaBold.ttf
