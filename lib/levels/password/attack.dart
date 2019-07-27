@@ -20,18 +20,16 @@ class PasswordAttackState extends State<PasswordAttackPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
-      decoration: gradientDecoration,
-      child: _userInfo()
-    );
+    return GestureDetector(
+      onTap: () {
+        Navigator.pop(context);
+      },
+        child: Container(decoration: gradientDecoration, child: _userInfo()));
   }
 
   Widget _userInfo() {
     return Row(
-      children: <Widget>[
-        Text(attackedPerson.name)
-      ],
+      children: <Widget>[Text(attackedPerson.name)],
     );
   }
 }
