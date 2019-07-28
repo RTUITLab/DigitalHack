@@ -44,12 +44,13 @@ class BodyWidgetState extends State<BodyWidget> {
               style: TextStyle(
                   fontSize: 34,
                   fontFamily: fontFamilyBold,
-                  color: Colors.grey[600])),
-          alignment: Alignment(0, -0.8),
+                  color: Colors.white)),
+          alignment: Alignment(0, -0.85),
         ),
-        oneLevel(context, Alignment(0, -0.55)),
-        customLevel(Alignment(0, 0.03), "Уровень 2"),
-        customLevel(Alignment(0, 0.62), "Уровень 3"),
+        oneLevel(context, Alignment(0, -0.6)),
+        customLevel(Alignment(0, -0.17), "Уровень 2"),
+        customLevel(Alignment(0, 0.26), "Уровень 3"),
+        customLevel(Alignment(0, 0.70), "Уровень 4"),
         bottomNavig(context, Alignment(0, 0))
       ],
     );
@@ -102,14 +103,15 @@ class BodyWidgetState extends State<BodyWidget> {
           alignment: Alignment(-0.85, -0.9),
         ),
         Container(
+          margin: new EdgeInsets.symmetric(vertical: 10.0),
           child: SizedBox(
             width: 250,
             child: Text(
               "Компьютерная грамотность. Пароли",
               style: TextStyle(
-                  fontSize: 28,
-                  fontFamily: fontFamilyLight,
-                  color: Colors.grey[600]),
+                  fontSize: 23,
+                  fontFamily: fontFamilyBold,
+                  color: Colors.white),
               softWrap: true,
             ),
           ),
@@ -121,15 +123,33 @@ class BodyWidgetState extends State<BodyWidget> {
               globusPic,
               height: 110,
             ),
-            Alignment(0, -0.55),
+            Alignment(0, -0.66),
             ((context) => App_Ed())),
+        Container(
+            child: Text(
+              'Теория',
+              style: TextStyle(fontSize: 30, fontFamily: fontFamilyBold),
+            ),
+            alignment: Alignment(0, -0.33)),
         _boxLevel(gradientBorderRadiusGreenDecoration(),
-            SvgPicture.asset(imagePath, height: 110), Alignment(0, 0.03), null),
+            SvgPicture.asset(imagePath, height: 110), Alignment(0, -0.1), null),
+            Container(
+            child: Text(
+              'Защита',
+              style: TextStyle(fontSize: 30, fontFamily: fontFamilyBold),
+            ),
+            alignment: Alignment(0, 0.16)),
         _boxLevel(
             gradientBorderRadiusRedDecoration(),
             SvgPicture.asset(swordPic, height: 110),
-            Alignment(0, 0.62),
+            Alignment(0, 0.46),
             ((context) => PasswordAttackPage(getRandomPerson()))),
+             Container(
+            child: Text(
+              'Нападение',
+              style: TextStyle(fontSize: 30, fontFamily: fontFamilyBold),
+            ),
+            alignment: Alignment(0, 0.65)),
         bottomNavig(context, Alignment(0, 0))
       ],
     );
@@ -142,11 +162,7 @@ class BodyWidgetState extends State<BodyWidget> {
             setState(() {
               selectedWidgetMarker = WidgetMarker.level;
             });
-            // Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //         builder: (context) =>
-            //             PasswordAttackPage(getRandomPerson())));
+
           },
           child: Container(
             child: Stack(
@@ -156,7 +172,7 @@ class BodyWidgetState extends State<BodyWidget> {
                     child: Text(
                       "Уровень 1",
                       style: TextStyle(
-                          color: Colors.grey[600],
+                          color: Colors.white,
                           fontSize: 22,
                           fontFamily: fontFamilyBold),
                       textAlign: TextAlign.right,
@@ -167,9 +183,9 @@ class BodyWidgetState extends State<BodyWidget> {
                     child: Text(
                       "Компьютерная грамотность. Пароли",
                       style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: 30,
-                          fontFamily: fontFamilyLight),
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontFamily: fontFamilyBold),
                       softWrap: true,
                     ),
                   ),
@@ -247,7 +263,7 @@ class BodyWidgetState extends State<BodyWidget> {
     return Column(
       children: <Widget>[
         Container(
-          color: Colors.white,
+          color: Colors.transparent,
           height: 100,
           child: Row(
             children: <Widget>[
@@ -259,6 +275,7 @@ class BodyWidgetState extends State<BodyWidget> {
                   child: SvgPicture.asset(
                     avatarPic,
                     height: 50,
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -272,6 +289,7 @@ class BodyWidgetState extends State<BodyWidget> {
                   child: SvgPicture.asset(
                     playerButtonPic,
                     height: 50,
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -283,6 +301,7 @@ class BodyWidgetState extends State<BodyWidget> {
                   child: SvgPicture.asset(
                     settingPic,
                     height: 50,
+                    color: Colors.white,
                   ),
                 ),
               ),
