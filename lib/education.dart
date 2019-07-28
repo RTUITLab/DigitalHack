@@ -29,8 +29,13 @@ class App_Ed extends StatelessWidget {
       Align(child: SvgPicture.asset(
         'assets/key.svg',
         height: 160.0,
-        width: 1600.0,
+        width: 160.0,
       ),alignment: new Alignment(-0.05, -0.05),),
+      Align(child: SvgPicture.asset(
+        'assets/thinking.svg',
+        height: 100.0,
+        width: 100.0,
+      ),alignment: new Alignment(-0.55, 2),),
       Align(
             child: Text(
               'Он должен содержать не менее 8 символов верхнего и нижнего регистров, специальные символы и цыфры',
@@ -44,10 +49,10 @@ class App_Ed extends StatelessWidget {
             child: Text(
               'Зачем так\nсложно?',
               style: TextStyle(
-                  fontFamily: 'MyFont', color: Colors.white, fontSize: 20),
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 30),
               textAlign: TextAlign.center,
             ),
-            alignment: new Alignment(0.7, 1.7),
+            alignment: new Alignment(0.45, 1.82),
           ),
 
       Align(
