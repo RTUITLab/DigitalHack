@@ -50,7 +50,7 @@ class MainPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          App_Ed()));
+                          App()));
             },
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
