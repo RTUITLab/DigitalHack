@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'levels/password/attack.dart';
+import 'levels/password/persons.dart';
 import 'models/person.dart';
 
 import 'package:intro_views_flutter/Models/page_view_model.dart';
@@ -59,7 +60,7 @@ class App extends StatelessWidget {
       Align(child: Text('Safe \n Hack', style: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 50), textAlign: TextAlign.center,),
       alignment: new Alignment(0.55, 0.1),
       ),
-      Align(child: Text('О киберугрозах - безопасно!', style: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 24), textAlign: TextAlign.center,),
+      Align(child: Text('О киберугрозах\n- безопасно!', style: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 28), textAlign: TextAlign.center,),
       alignment: new Alignment(0, 1.15),
       ),
       
@@ -72,136 +73,216 @@ class App extends StatelessWidget {
     PageViewModel(
       pageColor: const Color(0xFF8BC34A),
       body: Text(
-        'Изучайте компьютерную грамотность, криптографию и основы иноформативной безопасности', style: TextStyle(fontSize: 18),
+        'Изучайте компьютерную грамотность, криптографию и основы иноформативной безопасности',
+        style: TextStyle(fontSize: 18),
       ),
       title: Text(''),
-      mainImage: Stack(children: <Widget>[
-        Align(child: SvgPicture.asset(
-        'assets/computer.svg',
-        height: 285.0,
-        width: 285.0,
-        //alignment: Alignment.center,
-        ),
-        alignment: new Alignment(0, 0),
-        ),
-        
-        Align(child: SvgPicture.asset(
-        'assets/sword.svg',
-        height: 100.0,
-        width: 100.0,
-      ),
-      alignment: new Alignment(-0.6, 0.7),
-        ),
-
-        Align(child: SvgPicture.asset(
-        'assets/SafeHack_Logo.svg',
-        height: 100.0,
-        width: 100.0,
-      ),
-      alignment: new Alignment(-0.3 , -1.5),
-      ),
-      Align(child: Text('Safe \n Hack', style: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 30), textAlign: TextAlign.center,),
-      alignment: new Alignment(0.3, -1.4),
-      ),
-      Align(child: Text('Два режима игры!\nЛучшая защита - это нападение.', style: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 24), textAlign: TextAlign.center,),
-      alignment: new Alignment(0, 1.3),
-      ),
-      
-      ],
+      mainImage: Stack(
+        children: <Widget>[
+          Align(
+            child: SvgPicture.asset(
+              'assets/computer.svg',
+              height: 285.0,
+              width: 285.0,
+              //alignment: Alignment.center,
+            ),
+            alignment: new Alignment(0, 0),
+          ),
+          Align(
+            child: SvgPicture.asset(
+              'assets/swordcircle.svg',
+              height: 130.0,
+              width: 130.0,
+            ),
+            alignment: new Alignment(-0.7, 0.8),
+          ),
+          Align(
+            child: SvgPicture.asset(
+              'assets/SafeHack_Logo.svg',
+              height: 100.0,
+              width: 100.0,
+            ),
+            alignment: new Alignment(-0.3, -1.5),
+          ),
+          Align(
+            child: Text(
+              'Safe \n Hack',
+              style: TextStyle(
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 30),
+              textAlign: TextAlign.center,
+            ),
+            alignment: new Alignment(0.3, -1.4),
+          ),
+          Align(
+            child: Text(
+              'Два режима игры!\nЛучшая защита - это нападение.',
+              style: TextStyle(
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 24),
+              textAlign: TextAlign.center,
+            ),
+            alignment: new Alignment(0, 1.3),
+          ),
+        ],
       ),
       textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
     ),
-
-
     PageViewModel(
       pageColor: const Color(0xFF607D8B),
       body: Text(
-        'Только полезная информация. Обучение от простого к сложному на интерактивных примерах и логических задачах.', style: TextStyle(fontSize: 18),
+        'Только полезная информация. Обучение от простого к сложному на интерактивных примерах и логических задачах.',
+        style: TextStyle(fontSize: 18),
       ),
       title: Text(''),
-      mainImage: Stack(children: <Widget>[
-        Align(child: SvgPicture.asset(
-        'assets/flowchart.svg',
-        height: 150.0,
-        width: 150.0,
-        //alignment: Alignment.center,
-        ),
-        alignment: new Alignment(-0.6, 0.2),
-        ),
-        
-        Align(child: SvgPicture.asset(
-        'assets/debugging.svg',
-        height: 150.0,
-        width: 150.0,
-      ),
-      alignment: new Alignment(0.6, 0.8),
-        ),
-
-        Align(child: SvgPicture.asset(
-        'assets/SafeHack_Logo.svg',
-        height: 100.0,
-        width: 100.0,
-      ),
-      alignment: new Alignment(-0.3 , -1.5),
-      ),
-      Align(child: Text('Safe \n Hack', style: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 30), textAlign: TextAlign.center,),
-      alignment: new Alignment(0.3, -1.4),
-      ),
-      Align(child: Text('Актуальные вопросы кибербезопасности!', style: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 24), textAlign: TextAlign.center,),
-      alignment: new Alignment(0, 1.3),
-      ),
-      
-      ],
+      mainImage: Stack(
+        children: <Widget>[
+          Align(
+            child: SvgPicture.asset(
+              'assets/flowchart.svg',
+              height: 150.0,
+              width: 150.0,
+              //alignment: Alignment.center,
+            ),
+            alignment: new Alignment(-0.7, 0.2),
+          ),
+          Align(
+            child: SvgPicture.asset(
+              'assets/debugging.svg',
+              height: 150.0,
+              width: 150.0,
+            ),
+            alignment: new Alignment(0.6, 0.8),
+          ),
+          Align(
+            child: SvgPicture.asset(
+              'assets/coding.svg',
+              height: 150.0,
+              width: 150.0,
+            ),
+            alignment: new Alignment(0.6, -0.5),
+          ),
+          Align(
+            child: SvgPicture.asset(
+              'assets/SafeHack_Logo.svg',
+              height: 100.0,
+              width: 100.0,
+            ),
+            alignment: new Alignment(-0.3, -1.5),
+          ),
+          Align(
+            child: Text(
+              'Safe \n Hack',
+              style: TextStyle(
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 30),
+              textAlign: TextAlign.center,
+            ),
+            alignment: new Alignment(0.3, -1.4),
+          ),
+          Align(
+            child: Text(
+              'Актуальные вопросы кибербезопасности!',
+              style: TextStyle(
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 24),
+              textAlign: TextAlign.center,
+            ),
+            alignment: new Alignment(0, 1.3),
+          ),
+        ],
       ),
       textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
     ),
-
-
     PageViewModel(
       pageColor: const Color(0xFF8BC34A),
       body: Text(
-        'Соревнуйся с друзьсями, зарабатывай BIGcoin\'ы, используйте подсказкиб делая свою жизнь в интернете безопаснее!', style: TextStyle(fontSize: 18),
+        'Соревнуйся с друзьсями, зарабатывай BIGcoin\'ы, используйте подсказкиб делая свою жизнь в интернете безопаснее!',
+        style: TextStyle(fontSize: 18),
       ),
       title: Text(''),
-       mainImage: Stack(children: <Widget>[
-        Align(child: SvgPicture.asset(
-        'assets/bars.svg',
-        height: 250.0,
-        width: 250.0,
-        //alignment: Alignment.center,
-        ),
-        alignment: new Alignment(0, 0),
-        ),
-        
-        Align(child: SvgPicture.asset(
-        'assets/coin.svg',
-        height: 50.0,
-        width: 50.0,
-      ),
-      alignment: new Alignment(-0.1, -0.5),
-        ),
-        Align(child: SvgPicture.asset(
-        'assets/coin.svg',
-        height: 50.0,
-        width: 50.0,
-      ),
-      alignment: new Alignment(0.6, -0.8),
-        ),
-        Align(child: SvgPicture.asset(
-        'assets/SafeHack_Logo.svg',
-        height: 100.0,
-        width: 100.0,
-      ),
-      alignment: new Alignment(-0.3 , -1.5),
-      ),
-      Align(child: Text('Safe \n Hack', style: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 30), textAlign: TextAlign.center,),
-      alignment: new Alignment(0.3, -1.4),
-      ),
-      Align(child: Text('Повышай уровень знаний - повышай рейтинг!', style: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 24), textAlign: TextAlign.center,),
-      alignment: new Alignment(0, 1.3),
-      ),
-      
-      ],
+      mainImage: Stack(
+        children: <Widget>[
+          Align(
+            child: SvgPicture.asset(
+              'assets/statscircle.svg',
+              height: 250.0,
+              width: 250.0,
+              //alignment: Alignment.center,
+            ),
+            alignment: new Alignment(0, 0),
+          ),
+          Align(
+            child: SvgPicture.asset(
+              'assets/coin.svg',
+              height: 50.0,
+              width: 50.0,
+            ),
+            alignment: new Alignment(-0.7, 0.6),
+          ),
+          Align(
+            child: SvgPicture.asset(
+              'assets/coin.svg',
+              height: 40.0,
+              width: 40.0,
+            ),
+            alignment: new Alignment(-0.1, 0.9),
+          ),
+          Align(
+            child: SvgPicture.asset(
+              'assets/coin.svg',
+              height: 60.0,
+              width: 60.0,
+            ),
+            alignment: new Alignment(0.7, 0.7),
+          ),
+          Align(
+            child: SvgPicture.asset(
+              'assets/light-bulb.svg',
+              height: 40.0,
+              width: 40.0,
+            ),
+            alignment: new Alignment(-0.85, -0.2),
+          ),
+          Align(
+            child: SvgPicture.asset(
+              'assets/light-bulb.svg',
+              height: 60.0,
+              width: 60.0,
+            ),
+            alignment: new Alignment(-0.3, -0.8),
+          ),
+          Align(
+            child: SvgPicture.asset(
+              'assets/light-bulb.svg',
+              height: 90.0,
+              width: 90.0,
+            ),
+            alignment: new Alignment(0.9, -0.8),
+          ),
+          Align(
+            child: SvgPicture.asset(
+              'assets/SafeHack_Logo.svg',
+              height: 100.0,
+              width: 100.0,
+            ),
+            alignment: new Alignment(-0.3, -1.5),
+          ),
+          Align(
+            child: Text(
+              'Safe \n Hack',
+              style: TextStyle(
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 30),
+              textAlign: TextAlign.center,
+            ),
+            alignment: new Alignment(0.3, -1.4),
+          ),
+          Align(
+            child: Text(
+              'Повышай уровень знаний - повышай рейтинг!',
+              style: TextStyle(
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 24),
+              textAlign: TextAlign.center,
+            ),
+            alignment: new Alignment(0, 1.3),
+          ),
+        ],
       ),
       textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
     ),
@@ -209,14 +290,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'IntroViews Flutter', //title of app
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ), //ThemeData
-      home: Builder(
-        builder: (context) => IntroViewsFlutter(
+    return IntroViewsFlutter(
           pages,
            skipText: Text('Далее'),
            doneText: Text('Начать'),
@@ -224,55 +298,14 @@ class App extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => PasswordAttackPage(Person(name: 'Alice', phoneMumber: '+7 800 555 35 35')),
+                builder: (context) => PasswordAttackPage(getRandomPerson()),
               ), //MaterialPageRoute
             );
           },
           pageButtonTextStyles: TextStyle(
             color: Colors.white,
             fontSize: 18.0,
-          ),
-        ), //IntroViewsFlutter
-      ), //Builder
-    ); //Material App
+          ));
+        
   }
 }
-
-/// Home Page of our example app.
-
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ), //Appbar
-      body: Center(
-        child: Text("This is the home page of the app"),
-      ), //Center
-    ); //Scaffold
-  }
-}
-
-/* import 'package:flutter/material.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Just a list"),
-        ),
-       body: Card(child: Column(children: <Widget>[
-          Image.asset('assets/pic.jpg'),
-          Text('This is Security'),  
-        ],),)
-      ),
-    );
-  }
-}
- */

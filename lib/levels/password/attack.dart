@@ -4,6 +4,8 @@ import 'package:hello_world/general/gradientdecoration.dart';
 import 'package:hello_world/general/strings.dart';
 import 'package:hello_world/models/person.dart';
 
+import 'brute-force.dart';
+
 class PasswordAttackPage extends StatefulWidget {
   final Person attackedPerson;
 
@@ -17,19 +19,25 @@ class PasswordAttackPage extends StatefulWidget {
 
 class PasswordAttackState extends State<PasswordAttackPage> {
   final Person attackedPerson;
+  final lexems = new Set<String>();
+  final lexemsController = TextEditingController();
 
   PasswordAttackState(this.attackedPerson);
 
   @override
+  void dispose() {
+    lexemsController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // type: MaterialType.card,
       body: Container(
           padding: const EdgeInsets.only(top: 30),
           decoration: gradientDecoration,
           child: _page(context)),
     );
-    //  Container(decoration: gradientDecoration, child: _userInfo()));
   }
 
   Widget _page(BuildContext context) {
@@ -97,14 +105,14 @@ class PasswordAttackState extends State<PasswordAttackPage> {
         Column(
           children: <Widget>[
             Text(
-              'Аня Иванова',
+              attackedPerson.name,
               style: TextStyle(fontSize: 23, fontFamily: fontFamilyBold),
               textAlign: TextAlign.center,
             ),
             SizedBox(
               width: 200,
               child: Text(
-                '07 июля 2002 На своей странице указала, что любит фотографировать, ведет блог в Instagram под ником freya.',
+                '${attackedPerson.birthDay} На своей странице указала, что любит фотографировать, ведет блог в Instagram под ником freya.',
                 style: TextStyle(fontSize: 19, fontFamily: fontFamilyLight),
                 textAlign: TextAlign.center,
                 softWrap: true,
@@ -175,19 +183,34 @@ class PasswordAttackState extends State<PasswordAttackPage> {
       children: <Widget>[
         Container(
           margin: EdgeInsets.only(top: 10),
-                  child: RaisedButton(
+          child: RaisedButton(
             child: Text(
               'Запустить утилиту',
               style: TextStyle(color: Colors.white),
             ),
-            onPressed: () => print('123'),
+            onPressed: () {
+              print(lexems);
+              print(lexems.length);
+              if (lexems.length < 2) {
+                showDialog(
+                    context: context,
+                    builder: (builder) => AlertDialog(
+                          title:
+                              Text('Необходимо ввести как минимум два слова'),
+                        ));
+                return;
+              }
+              Navigator.push(context, MaterialPageRoute(builder: (builder) {
+                return BruteForce(lexems);
+              }));
+            },
             shape: StadiumBorder(),
             color: Colors.blue,
           ),
         ),
         Container(
           child: Text(
-            "Колличество лексем: ",
+            'Колличество лексем: ${lexems.length}',
             style: TextStyle(fontFamily: fontFamilyBold, fontSize: 15),
           ),
           margin: EdgeInsets.only(top: 20, bottom: 10),
@@ -203,6 +226,7 @@ class PasswordAttackState extends State<PasswordAttackPage> {
                     child: TextField(
                       style: TextStyle(fontSize: 20),
                       decoration: InputDecoration(),
+                      controller: lexemsController,
                     ),
                   ),
                 ),
@@ -211,7 +235,27 @@ class PasswordAttackState extends State<PasswordAttackPage> {
                 child: Text('Добавить'),
                 color: Colors.yellow,
                 shape: StadiumBorder(),
-                onPressed: () => print('12345'),
+                onPressed: () {
+                  if (lexemsController.text.trim().isEmpty) {
+                    showDialog(
+                        context: context,
+                        builder: (builder) => AlertDialog(
+                              title:
+                                  Text('Строки только с пробелами недопустимы'),
+                            ));
+                  } else if (lexems.contains(lexemsController.text)) {
+                    showDialog(
+                        context: context,
+                        builder: (builder) => AlertDialog(
+                              title: Text(
+                                  'Данное предположение уже занесено в базу'),
+                            ));
+                  } else
+                    setState(() {
+                      lexems.add(lexemsController.text);
+                    });
+                  lexemsController.text = '';
+                },
               )
             ],
           ),
