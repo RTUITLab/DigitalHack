@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
@@ -15,23 +14,54 @@ class App extends StatelessWidget {
         pageColor: const Color(0xFF03A9F4),
         // iconImageAssetPath: 'assets/air-hostess.png',
         bubble: Image.asset('assets/air-hostess.png'),
-        
-        
-
         body: Text(
           'Проходите уровни и узновайте что-то новое о кибербезопасности каждый день',
         ),
         title: Text(''),
-        textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
-        mainImage: Image.asset(
-          'assets/shield.png',
-          height: 285.0,
-          width: 285.0,
-          alignment: Alignment.center,
-        )),
+        textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 18),
+        mainImage: Column(children: <Widget>[
+          Expanded(
+          flex: 3, // 20%
+          child: Text(''),
+        ),
+          Expanded(
+          flex: 8, // 20%
+          child: Row(children: <Widget>[
+          Expanded(
+          flex: 4, // 20%
+          child: Align(
+            child: Image.asset(
+            'assets/shield.png',
+           height: 180.0,
+           width: 180.0,
+          ),),
+          ),
+          Expanded(
+          flex: 3, // 20%
+          child: Align(
+            child: Text(
+            'Safe \n Hack', style: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 50), textAlign: TextAlign.center,),
+            alignment: Alignment.center,
+          ),
+          ),
+        ],
+        ),
+        ),
+
+        Expanded(
+          flex: 2, // 20%
+          child: Align(
+            child: Text(
+            'О киберугрозах - безопасно!', style: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 30), textAlign: TextAlign.center,),
+          ),
+        ),     
+        ],)
+        ),
+  
+
+
     PageViewModel(
       pageColor: const Color(0xFF8BC34A),
-      iconImageAssetPath: 'assets/waiter.png',
       body: Text(
         'We  work  for  the  comfort ,  enjoy  your  stay  at  our  beautiful  hotels',
       ),
@@ -44,9 +74,10 @@ class App extends StatelessWidget {
       ),
       textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
     ),
+
+
     PageViewModel(
       pageColor: const Color(0xFF607D8B),
-      iconImageAssetPath: 'assets/taxi-driver.png',
       body: Text(
         'Easy  cab  booking  at  your  doorstep  with  cashless  payment  system',
       ),
@@ -59,9 +90,10 @@ class App extends StatelessWidget {
       ),
       textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
     ),
+
+
     PageViewModel(
       pageColor: const Color(0xFF607D8B),
-      iconImageAssetPath: 'assets/taxi-driver.png',
       body: Text(
         'Easy  cab  booking  at  your  doorstep  with  cashless  payment  system',
       ),
