@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hello_world/levels/password/persons.dart';
+import 'levels/password/attack.dart';
 import 'general/strings.dart';
 import 'general/gradientdecoration.dart';
+import 'models/person.dart';
 
 class MainMenuPage extends StatelessWidget {
   @override
@@ -29,39 +32,46 @@ class MainMenuPage extends StatelessWidget {
         ),
         Align(
           child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PasswordAttackPage(
+                            getRandomPerson())));
+              },
               child: Container(
-            child: Stack(
-              children: <Widget>[
-                Container(
-                    alignment: Alignment(0.80, -0.7),
-                    child: Text(
-                      "Уровень 1",
-                      style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: 22,
-                          fontFamily: fontFamilyBold),
-                      textAlign: TextAlign.right,
-                    )),
-                Container(
-                  child: SizedBox(
-                    width: 270,
-                    child: Text(
-                      "Компьютерная грамотность. Пароли",
-                      style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: 30,
-                          fontFamily: fontFamilyLight),
-                      softWrap: true,
-                    ),
-                  ),
-                  alignment: Alignment(0, 0.05),
-                )
-              ],
-            ),
-            decoration: gradientBorderRadiusDecoration(),
-            width: 350,
-            height: 160,
-          )),
+                child: Stack(
+                  children: <Widget>[
+                    Container(
+                        alignment: Alignment(0.80, -0.7),
+                        child: Text(
+                          "Уровень 1",
+                          style: TextStyle(
+                              color: Colors.grey[600],
+                              fontSize: 22,
+                              fontFamily: fontFamilyBold),
+                          textAlign: TextAlign.right,
+                        )),
+                    Container(
+                      child: SizedBox(
+                        width: 270,
+                        child: Text(
+                          "Компьютерная грамотность. Пароли",
+                          style: TextStyle(
+                              color: Colors.grey[600],
+                              fontSize: 30,
+                              fontFamily: fontFamilyLight),
+                          softWrap: true,
+                        ),
+                      ),
+                      alignment: Alignment(0, 0.05),
+                    )
+                  ],
+                ),
+                decoration: gradientBorderRadiusDecoration(),
+                width: 350,
+                height: 160,
+              )),
           alignment: Alignment(0, -0.47),
         )
       ],
