@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hello_world/levels/password/attack.dart';
 import 'general/strings.dart';
+import 'Intro.dart';
 import 'general/gradientdecoration.dart';
-import 'models/person.dart';
 
 void main() => runApp(MyApp());
 
@@ -49,7 +49,7 @@ class MainPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          PasswordAttackPage(Person(name: 'Alice', phoneMumber: '+7 800 555 35 35'))));
+                          App()));
             },
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
