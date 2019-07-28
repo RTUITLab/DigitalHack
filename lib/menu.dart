@@ -6,6 +6,8 @@ import 'general/strings.dart';
 import 'general/gradientdecoration.dart';
 import 'models/person.dart';
 
+enum WidgetMarker { main, level }
+
 class MainMenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,13 +15,27 @@ class MainMenuPage extends StatelessWidget {
       child: Scaffold(
         body: Container(
           decoration: gradientBlueDecoration,
-          child: _content(context),
+          child: BodyWidget(),
         ),
       ),
     );
   }
+}
 
-  Widget _content(BuildContext context) {
+class BodyWidget extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => BodyWidgetState();
+}
+
+class BodyWidgetState extends State<BodyWidget> {
+  WidgetMarker selectedWidgetMarker = WidgetMarker.main;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(child: getCustomContainer(context));
+  }
+
+  Widget _content() {
     return Stack(
       children: <Widget>[
         Container(
@@ -38,15 +54,90 @@ class MainMenuPage extends StatelessWidget {
     );
   }
 
+  Widget getCustomContainer(BuildContext context) {
+    switch (selectedWidgetMarker) {
+      case WidgetMarker.main:
+        return _content();
+      case WidgetMarker.level:
+        return _contentLevel(context);
+    }
+  }
+
+  Widget _boxLevel(BoxDecoration box, SvgPicture img, Alignment align, Widget Function(BuildContext) test)
+  {
+     return GestureDetector(
+       onTap: () {
+          Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: test));
+       },
+            child: Align(
+        child: Container(
+          child: Align(
+            child: img,
+          ),
+          decoration: box,
+          width: 350,
+          height: 140,
+        ),
+        alignment: align,
+    ),
+     );
+  }
+
+  Widget _contentLevel(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        Align(
+          child: GestureDetector(
+            child: SvgPicture.asset(
+              backPic,
+              height: 60,
+            ),
+            onTap: () {
+             setState(() {
+              selectedWidgetMarker = WidgetMarker.main; 
+             });
+            },
+          ),
+          alignment: Alignment(-0.85, -0.9),
+        ),
+        Container(
+          child: SizedBox(
+            width: 250,
+            child: Text(
+              "Компьютерная грамотность. Пароли",
+              style: TextStyle(
+                  fontSize: 28,
+                  fontFamily: fontFamilyLight,
+                  color: Colors.grey[600]),
+              softWrap: true,
+            ),
+          ),
+          alignment: Alignment(0.3, -0.9),
+        ),
+        _boxLevel(gradientBorderRadiusDecoration(), SvgPicture.asset(globusPic, height: 110,), Alignment(0,-0.55), null),
+        _boxLevel(gradientBorderRadiusGreenDecoration(), SvgPicture.asset(imagePath, height: 110), Alignment(0,0.03), null),
+        _boxLevel(gradientBorderRadiusRedDecoration(), SvgPicture.asset(swordPic, height: 110), Alignment(0,0.62), ((context) =>
+                        PasswordAttackPage(getRandomPerson()))),
+         bottomNavig(context, Alignment(0, 0))
+      ],
+    );
+  }
+
   Widget oneLevel(BuildContext context, Alignment align) {
     return Align(
       child: GestureDetector(
           onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => PasswordAttackPage(
-                          getRandomPerson())));
+            setState(() {
+              selectedWidgetMarker = WidgetMarker.level;
+            });
+            // Navigator.push(
+            //     context,
+            //     MaterialPageRoute(
+            //         builder: (context) =>
+            //             PasswordAttackPage(getRandomPerson())));
           },
           child: Container(
             child: Stack(
@@ -81,7 +172,6 @@ class MainMenuPage extends StatelessWidget {
                       height: 20,
                       child: Container(
                         decoration: curcleDecoration(Colors.white),
-                          
                       ),
                     ),
                     alignment: Alignment(0.8, 0.8)),
@@ -147,14 +237,32 @@ class MainMenuPage extends StatelessWidget {
   Widget bottomNavig(BuildContext context, Alignment align) {
     return Column(
       children: <Widget>[
-        Container(color: Colors.white,
-        height: 70,
-        child: Row(children: <Widget>[
-          Align(child: SvgPicture.asset(avatarPic, height: 50,),),
-          Align(child: SvgPicture.asset(playerButtonPic, height: 50,),),
-          Align(child: SvgPicture.asset(settingPic, height: 50,),),
-        ],
-        mainAxisAlignment: MainAxisAlignment.spaceAround,),
+        Container(
+          color: Colors.white,
+          height: 70,
+          child: Row(
+            children: <Widget>[
+              Align(
+                child: SvgPicture.asset(
+                  avatarPic,
+                  height: 50,
+                ),
+              ),
+              Align(
+                child: SvgPicture.asset(
+                  playerButtonPic,
+                  height: 50,
+                ),
+              ),
+              Align(
+                child: SvgPicture.asset(
+                  settingPic,
+                  height: 50,
+                ),
+              ),
+            ],
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          ),
         )
       ],
       mainAxisAlignment: MainAxisAlignment.end,
