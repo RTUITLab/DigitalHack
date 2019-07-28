@@ -4,7 +4,7 @@ final persons = [
   new Person(
     name: 'Аня Иванова',
     birthDay: '07 июля 2002',
-    password: 'invanova2002'
+    password: 'ivanova2002'
   )
 ];
 

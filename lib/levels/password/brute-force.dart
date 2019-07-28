@@ -3,18 +3,22 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hello_world/general/gradientdecoration.dart';
 import 'package:hello_world/general/strings.dart';
+import 'package:hello_world/levels/password/endgame/win.dart';
+
+import 'endgame/lose.dart';
 
 class BruteForce extends StatefulWidget {
   List<String> lexems;
+  final String password;
 
-  BruteForce(Set<String> lexems) {
+  BruteForce(this.password, Set<String> lexems) {
     this.lexems = lexems.toList();
     this.lexems.sort();
   }
 
   @override
   State<StatefulWidget> createState() {
-    return BruteForceState(lexems);
+    return BruteForceState(lexems, password);
   }
 }
 
@@ -22,6 +26,7 @@ class BruteForceState extends State<BruteForce> {
   Timer _timer;
 
   final List<String> lexems;
+  final String password;
 
   int index1 = 0;
   int index2 = 0;
@@ -29,7 +34,7 @@ class BruteForceState extends State<BruteForce> {
   int checksLeft = 0;
   int totalchecks = 0;
 
-  BruteForceState(this.lexems) {
+  BruteForceState(this.lexems, this.password) {
     checksLeft = totalchecks = this.lexems.length * this.lexems.length;
   }
 
@@ -49,7 +54,7 @@ class BruteForceState extends State<BruteForce> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: const EdgeInsets.only(top: 30),
+        padding: const EdgeInsets.only(top: 40),
         decoration: gradientDecoration,
         child: Column(children: [_lexems(), _checkProgress()]),
       ),
@@ -162,14 +167,13 @@ class BruteForceState extends State<BruteForce> {
   }
 
   Widget _checkProgress() {
-    print(100 - 100 * checksLeft / totalchecks);
     if (checksLeft != 0)
       return Container(
         margin: const EdgeInsets.all(10),
         height: 100,
         width: 100,
-        child: CircularProgressIndicator (
-          value: 1 -  checksLeft / totalchecks,
+        child: CircularProgressIndicator(
+          value: 1 - checksLeft / totalchecks,
         ),
       );
     return Container();
@@ -186,7 +190,14 @@ class BruteForceState extends State<BruteForce> {
       if (index1 == lexems.length) {
         index1 = 0;
         _timer.cancel();
-        print("DONE");
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (builder) => LosePasswordAttackGame()));
+      }
+
+      if (lexems[index1] + lexems[index2] == password) {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (builder) => WinPasswordAttackGame()));
       }
     });
   }

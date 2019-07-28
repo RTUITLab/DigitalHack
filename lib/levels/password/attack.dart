@@ -201,7 +201,7 @@ class PasswordAttackState extends State<PasswordAttackPage> {
                 return;
               }
               Navigator.push(context, MaterialPageRoute(builder: (builder) {
-                return BruteForce(lexems);
+                return BruteForce(attackedPerson.password, lexems);
               }));
             },
             shape: StadiumBorder(),
