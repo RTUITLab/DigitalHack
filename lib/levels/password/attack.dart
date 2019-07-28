@@ -233,7 +233,7 @@ class PasswordAttackState extends State<PasswordAttackPage> {
                 ),
               ),
               RaisedButton(
-                child: Text('Добавить', style: TextStyle(fontSize: 22),),
+                child: Text('Добавить', style: TextStyle(fontSize: 18),),
                 color: Colors.yellow,
                 shape: StadiumBorder(),
                 onPressed: () {

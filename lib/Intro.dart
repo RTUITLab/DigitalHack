@@ -202,7 +202,7 @@ class App extends StatelessWidget {
     PageViewModel(
       pageColor: const Color(0xFF8BC34A),
       body: Text(
-        'Соревнуйся с друзьсями, зарабатывай BIGcoin\'ы, используйте подсказки делая свою жизнь в интернете безопаснее!',
+        'Соревнуйся с друзьями, зарабатывай BIGcoin\'ы, используйте подсказки делая свою жизнь в интернете безопаснее!',
         style: TextStyle(fontSize: 18),
       ),
       title: Text(''),

@@ -92,7 +92,7 @@ class App_Ed extends StatelessWidget {
       ),alignment: new Alignment(-0.55, 2),),
       Align(
             child: Text(
-              'Он должен содержать не менее 8 символов верхнего и нижнего регистров, специальные символы и цыфры',
+              'Он должен содержать не менее 8 символов верхнего и нижнего регистров, специальные символы и цифры',
               style: TextStyle(
                   fontFamily: 'MyFont', color: Colors.white, fontSize: 20),
               textAlign: TextAlign.center,
@@ -139,8 +139,8 @@ class App_Ed extends StatelessWidget {
       ),alignment: new Alignment(-0.9, -0.6),),
       Align(child: SvgPicture.asset(
         'assets/nerd.svg',
-        height: 100.0,
-        width: 100.0,
+        height: 110.0,
+        width: 110.0,
       ),alignment: new Alignment(0.8, 1),),
       Align(
             child: Text(
@@ -196,30 +196,33 @@ class App_Ed extends StatelessWidget {
         'assets/hourglass.svg',
         height: 120.0,
         width: 120.0,
-      ),alignment: new Alignment(0.8, -0.2),),
+      ),alignment: new Alignment(0.9, -0.2),),
       Align(child: SvgPicture.asset(
         'assets/calendar.svg',
-        height: 100.0,
-        width: 100.0,
-      ),alignment: new Alignment(-0.8, 1.5),),
-      Align(
+        height: 110.0,
+        width: 110.0,
+      ),alignment: new Alignment(0.8, 1.7),),
+      
+      Container(child: Align(
             child: Text(
-              'Чтобы взломать пароль из 4 символов верхнего и нижнего регистра, обычному компьютеру нужно',
+              'Чтобы взломать пароль\nиз 4 символов верхнего\nи нижнего регистра, обычному компьютеру нужно',
               style: TextStyle(
                   fontFamily: 'MyFont', color: Colors.white, fontSize: 30), 
               textAlign: TextAlign.left,
             ),
-            alignment: new Alignment(0.7, -1.4),
-          ),
-      Align(
+            alignment: new Alignment(-0.1, -1.4),
+          ), margin: new EdgeInsets.symmetric(horizontal: 20.0),)
+      ,
+      Container(child: Align(
             child: Text(
-              'Тогда как на пароль из 8 символов с добавлением специальных симыолов нужно',
+              'Тогда как на пароль\nиз 8 символов с добавлением специальных символов нужно',
               style: TextStyle(
                   fontFamily: 'MyFont', color: Colors.white, fontSize: 30),
-              textAlign: TextAlign.right,
+              textAlign: TextAlign.left,
             ),
-            alignment: new Alignment(-0.7, 0.8),
-          ),
+            alignment: new Alignment(-0.7, 1.1),
+          ), margin: new EdgeInsets.symmetric(horizontal: 20.0),)
+      ,
         Align(
             child: Text(
               '12 дней',
@@ -227,7 +230,7 @@ class App_Ed extends StatelessWidget {
                   fontFamily: 'MyFont', color: Colors.white, fontSize: 50),
               textAlign: TextAlign.center,
             ),
-            alignment: new Alignment(0.6, 1.35),
+            alignment: new Alignment(-0.8, 1.5),
           ),
       Align(
             child: Text(
