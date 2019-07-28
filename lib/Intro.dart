@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'levels/password/attack.dart';
 import 'levels/password/persons.dart';
 import 'models/person.dart';
-
+import 'menu.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
 
@@ -298,7 +298,7 @@ class App extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => PasswordAttackPage(getRandomPerson()),
+                  builder: (context) => MainMenuPage(),
               ), //MaterialPageRoute
             );
           },
@@ -307,5 +307,6 @@ class App extends StatelessWidget {
             fontSize: 18.0,
           ));
         
+          
   }
 }
