@@ -99,19 +99,19 @@ class App extends StatelessWidget {
           Align(
             child: SvgPicture.asset(
               'assets/SafeHack_Logo.svg',
-              height: 100.0,
-              width: 100.0,
+              height: 70.0,
+              width: 70.0,
             ),
-            alignment: new Alignment(-0.3, -1.5),
+            alignment: new Alignment(-0.2, -1.7),
           ),
           Align(
             child: Text(
               'Safe \n Hack',
               style: TextStyle(
-                  fontFamily: 'MyFont', color: Colors.white, fontSize: 30),
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 26),
               textAlign: TextAlign.center,
             ),
-            alignment: new Alignment(0.3, -1.4),
+            alignment: new Alignment(0.2, -1.65),
           ),
           Align(
             child: Text(
@@ -163,19 +163,19 @@ class App extends StatelessWidget {
           Align(
             child: SvgPicture.asset(
               'assets/SafeHack_Logo.svg',
-              height: 100.0,
-              width: 100.0,
+              height: 70.0,
+              width: 70.0,
             ),
-            alignment: new Alignment(-0.3, -1.5),
+            alignment: new Alignment(-0.2, -1.65),
           ),
           Align(
             child: Text(
               'Safe \n Hack',
               style: TextStyle(
-                  fontFamily: 'MyFont', color: Colors.white, fontSize: 30),
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 26),
               textAlign: TextAlign.center,
             ),
-            alignment: new Alignment(0.3, -1.4),
+            alignment: new Alignment(0.2, -1.6),
           ),
           Align(
             child: Text(
@@ -208,22 +208,24 @@ class App extends StatelessWidget {
             ),
             alignment: new Alignment(0, 0),
           ),
-          Align(
+          Opacity(child: Align(
             child: SvgPicture.asset(
               'assets/coin.svg',
               height: 50.0,
               width: 50.0,
             ),
             alignment: new Alignment(-0.7, 0.6),
-          ),
-          Align(
+          ), opacity: 0.5,)
+          ,
+          Opacity(child: Align(
             child: SvgPicture.asset(
               'assets/coin.svg',
               height: 40.0,
               width: 40.0,
             ),
             alignment: new Alignment(-0.1, 0.9),
-          ),
+          ), opacity: 0.8,)
+          ,
           Align(
             child: SvgPicture.asset(
               'assets/coin.svg',
@@ -232,22 +234,24 @@ class App extends StatelessWidget {
             ),
             alignment: new Alignment(0.7, 0.7),
           ),
-          Align(
+          Opacity(child: Align(
             child: SvgPicture.asset(
               'assets/light-bulb.svg',
               height: 40.0,
               width: 40.0,
             ),
             alignment: new Alignment(-0.85, -0.2),
-          ),
-          Align(
+          ), opacity: 0.5,)
+          ,
+          Opacity(child: Align(
             child: SvgPicture.asset(
               'assets/light-bulb.svg',
               height: 60.0,
               width: 60.0,
             ),
             alignment: new Alignment(-0.3, -0.8),
-          ),
+          ), opacity: 0.8,)
+          ,
           Align(
             child: SvgPicture.asset(
               'assets/light-bulb.svg',
@@ -259,19 +263,19 @@ class App extends StatelessWidget {
           Align(
             child: SvgPicture.asset(
               'assets/SafeHack_Logo.svg',
-              height: 100.0,
-              width: 100.0,
+              height: 70.0,
+              width: 70.0,
             ),
-            alignment: new Alignment(-0.3, -1.5),
+            alignment: new Alignment(-0.2, -1.7),
           ),
           Align(
             child: Text(
               'Safe \n Hack',
               style: TextStyle(
-                  fontFamily: 'MyFont', color: Colors.white, fontSize: 30),
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 26),
               textAlign: TextAlign.center,
             ),
-            alignment: new Alignment(0.3, -1.4),
+            alignment: new Alignment(0.2, -1.65),
           ),
           Align(
             child: Text(
