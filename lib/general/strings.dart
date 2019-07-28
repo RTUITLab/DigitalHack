@@ -7,3 +7,5 @@ final lightBulpPic = 'assets/light-bulb.svg';
 final coinPic = 'assets/coin.svg';
 final goalPic = 'assets/goal.svg';
 final lockPic = 'assets/locked.svg';
+
+final imagePath = 'assets/SafeHack_Logo.svg';

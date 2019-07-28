@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hello_world/levels/password/attack.dart';
-import 'package:hello_world/tests/icons.dart';
-
+import 'general/strings.dart';
+import 'Intro.dart';
 import 'general/gradientdecoration.dart';
-import 'models/person.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'SafeHack',
       theme: ThemeData(
-          fontFamily: 'Helvetica',
+          fontFamily: fontFamilyLight,
           textTheme: TextTheme(body1: TextStyle(color: Colors.white))),
       home: Scaffold(
           body: Container(
@@ -29,7 +27,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MainPage extends StatelessWidget {
-  final String imagePath = 'assets/SafeHack_Logo.svg';
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -52,7 +49,7 @@ class MainPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          PasswordAttackPage(Person(name: 'Аня Иванова', birthDay: '7 июля 2002'))));
+                          App()));
             },
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
@@ -85,7 +82,7 @@ class MainPage extends StatelessWidget {
       child: Text('?',
           style: TextStyle(
               fontSize: size,
-              fontFamily: 'Helvetica-Bold',
+              fontFamily: fontFamilyBold,
               color: Color.fromARGB(100, 255, 255, 255))),
       alignment: Alignment(a, b),
     );

@@ -52,24 +52,43 @@ class PasswordAttackState extends State<PasswordAttackPage> {
   }
 
   Widget _header(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Stack(
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        GestureDetector(
-          onTap: () => Navigator.pop(context),
-          child: SvgPicture.asset(
-            backPic,
-            width: 63,
+        Align(
+          child: GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: SvgPicture.asset(
+              backPic,
+              width: 63,
+            ),
           ),
+          alignment: Alignment(-0.90, 0),
         ),
-        Text(
-          'Уровень1. Нападение\n Пароли',
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 24, fontFamily: fontFamilyBold),
+        Align(
+          child: Text(
+            'Уровень 1. Нападение\n Пароли',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 20, fontFamily: fontFamilyBold),
+          ),
+          alignment: Alignment.topCenter,
         ),
-        SvgPicture.asset(
-          lightBulpPic,
-          width: 70,
+        Align(
+          child: SvgPicture.asset(
+            lightBulpPic,
+            width: 70,
+          ),
+          alignment: Alignment(0.90, 0),
+        ),
+        Align(
+          child: Text(
+            "4",
+            style: TextStyle(
+                color: Colors.blueAccent,
+                fontFamily: fontFamilyBold,
+                fontSize: 26),
+          ),
+          alignment: Alignment(0.90, 0.0),
         )
       ],
     );
@@ -87,13 +106,17 @@ class PasswordAttackState extends State<PasswordAttackPage> {
           children: <Widget>[
             Text(
               attackedPerson.name,
-              style: TextStyle(fontSize: 17, fontFamily: fontFamilyBold),
+              style: TextStyle(fontSize: 23, fontFamily: fontFamilyBold),
               textAlign: TextAlign.center,
             ),
-            Text(
-              "${attackedPerson.birthDay}\nНа своей странице \nуказала, что любит\nфотографировать,\nведет блог в Instagram\nпод ником freya.",
-              style: TextStyle(fontSize: 17, fontFamily: fontFamilyLight),
-              textAlign: TextAlign.center,
+            SizedBox(
+              width: 200,
+              child: Text(
+                '${attackedPerson.birthDay} На своей странице указала, что любит фотографировать, ведет блог в Instagram под ником freya.',
+                style: TextStyle(fontSize: 19, fontFamily: fontFamilyLight),
+                textAlign: TextAlign.center,
+                softWrap: true,
+              ),
             )
           ],
         )
@@ -106,32 +129,49 @@ class PasswordAttackState extends State<PasswordAttackPage> {
       alignment: Alignment.center,
       color: Colors.green[800],
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Text(
-            'Создайте словарь для brute-force\nутилиты, чтобы с её помощью\nподобрать пароль к странице Ани',
-            style: TextStyle(fontSize: 17, fontFamily: fontFamilyBold),
-            textAlign: TextAlign.center,
+          Container(
+            child: SizedBox(
+              width: 350,
+              child: Text(
+                'Создайте словарь для brute-force утилиты, чтобы с её помощью подобрать пароль к странице Ани',
+                style: TextStyle(fontSize: 17, fontFamily: fontFamilyBold),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            margin: EdgeInsets.only(top: 10, bottom: 10),
           ),
-          SizedBox(
-            width: double.infinity,
-            child: Container(
-                child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Flexible(
-                  child: SvgPicture.asset(
-                    lightBulpPic,
-                    width: 20,
+          Container(
+            margin: EdgeInsets.only(bottom: 10),
+            child: SizedBox(
+              width: double.infinity,
+              child: Container(
+                  child: Stack(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Align(
+                    child: SvgPicture.asset(
+                      lightBulpPic,
+                      width: 35,
+                    ),
+                    alignment: Alignment(-0.85, 0),
                   ),
-                ),
-                Text(
-                  'Аня не подкована в кибербезопасности и \nне знает, что нельзя использовать в\nпаролях открытую информацию, такую как\nфамилия, дата рождения, никнеймы и т.п. ',
-                  style: TextStyle(fontSize: 17, fontFamily: fontFamilyLight),
-                  textAlign: TextAlign.justify,
-                ),
-              ],
-            )),
+                  Align(
+                    child: SizedBox(
+                      width: 310,
+                      child: Text(
+                        'Аня не подкована в кибербезопасности и не знает, что нельзя использовать в паролях открытую информацию, такую как фамилия, дата рождения, никнеймы и т.п. ',
+                        style: TextStyle(
+                            fontSize: 17, fontFamily: fontFamilyLight),
+                        textAlign: TextAlign.justify,
+                        softWrap: true,
+                      ),
+                    ),
+                    alignment: Alignment(0.5, 0),
+                  ),
+                ],
+              )),
+            ),
           )
         ],
       ),
@@ -141,35 +181,14 @@ class PasswordAttackState extends State<PasswordAttackPage> {
   Widget _lexemsForm() {
     return Column(
       children: <Widget>[
-        Row(
-          children: <Widget>[
-            Flexible(
-              child: TextField(
-                controller: lexemsController,
-                decoration: InputDecoration(),
-              ),
+        Container(
+          margin: EdgeInsets.only(top: 10),
+                  child: RaisedButton(
+            child: Text(
+              'Запустить утилиту',
+              style: TextStyle(color: Colors.white),
             ),
-            RaisedButton(
-              child: Text('Добавить'),
-              color: Colors.yellow,
-              shape: StadiumBorder(),
-              onPressed: () {
-                if (lexems.contains(lexemsController.text)) {
-                  print('INCORRECT VALUE');
-                  // Света сказала что при вводе повторяющийся лексемы надо орять на пользователя, я хз как.
-                }
-                lexems.add(lexemsController.text);
-                lexemsController.text = '';
-              },
-            )
-          ],
-        ),
-        RaisedButton(
-          child: Text(
-            'Запустить утилиту',
-            style: TextStyle(color: Colors.white),
-          ),
-          onPressed: () {
+            onPressed: () {
             print(lexems);
             print(lexems.length);
             if (lexems.length < 2) {
@@ -184,9 +203,41 @@ class PasswordAttackState extends State<PasswordAttackPage> {
               return BruteForce(lexems);
             }));
           },
-          shape: StadiumBorder(),
-          color: Colors.blue, 
-        )
+            shape: StadiumBorder(),
+            color: Colors.blue,
+          ),
+        ),
+        Container(
+          child: Text(
+            "Колличество лексем: ",
+            style: TextStyle(fontFamily: fontFamilyBold, fontSize: 15),
+          ),
+          margin: EdgeInsets.only(top: 20, bottom: 10),
+        ),
+        Container(
+          child: Row(
+            children: <Widget>[
+              Flexible(
+                child: Container(
+                  margin: EdgeInsets.only(right: 15, left: 30),
+                  child: SizedBox(
+                    width: 250,
+                    child: TextField(
+                      style: TextStyle(fontSize: 20),
+                      decoration: InputDecoration(),
+                    ),
+                  ),
+                ),
+              ),
+              RaisedButton(
+                child: Text('Добавить'),
+                color: Colors.yellow,
+                shape: StadiumBorder(),
+                onPressed: () => print('12345'),
+              )
+            ],
+          ),
+        ),
       ],
     );
   }
