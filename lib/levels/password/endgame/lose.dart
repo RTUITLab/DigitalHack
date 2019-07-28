@@ -13,7 +13,7 @@ class LosePasswordAttackGame extends StatelessWidget {
         onTap: () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (builder) => MainMenuPage())),
         child: Container(
-          decoration: gradientDecoration,
+          decoration: gradientLoseDecoration,
           child: Stack(
             children: <Widget>[
               Align(

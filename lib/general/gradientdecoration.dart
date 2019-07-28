@@ -14,6 +14,35 @@ final gradientDecoration = BoxDecoration(
   ),
 );
 
+final gradientLoseDecoration = BoxDecoration(
+  gradient: LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    stops: [0.1, 0.3, 0.7, 0.9],
+    colors: [
+      Colors.red[300],
+      Colors.green[300],
+      Colors.green[400],
+      Colors.red[300],
+    ],
+  ),
+);
+
+
+final gradientWinDecoration = BoxDecoration(
+  gradient: LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    stops: [0.1, 0.3, 0.7, 0.9],
+    colors: [
+      Colors.lime[300],
+      Colors.green[300],
+      Colors.green[400],
+      Colors.lime[300],
+    ],
+  ),
+);
+
 final gradientBlueDecoration = BoxDecoration(
   gradient: LinearGradient(
     begin: Alignment.topLeft,

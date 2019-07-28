@@ -13,7 +13,7 @@ class WinPasswordAttackGame extends StatelessWidget {
         onTap: () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (builder) => MainMenuPage())),
         child: Container(
-          decoration: gradientDecoration,
+          decoration: gradientWinDecoration,
           child: Stack(
             children: <Widget>[
               Align(
