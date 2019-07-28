@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hello_world/levels/password/persons.dart';
 import 'levels/password/attack.dart';
 import 'general/strings.dart';
 import 'general/gradientdecoration.dart';
@@ -36,7 +37,7 @@ class MainMenuPage extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => PasswordAttackPage(
-                            Person(name: 'Alice', birthDay: '07 июля 2002'))));
+                            getRandomPerson())));
               },
               child: Container(
                 child: Stack(
