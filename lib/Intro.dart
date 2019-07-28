@@ -116,7 +116,7 @@ class App extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => PasswordAttackPage(Person(name: 'Alice', birthDay: '07 июля 2002')),
-              ), //MaterialPageRoute
+              ),
             );
           },
           pageButtonTextStyles: TextStyle(
@@ -126,42 +126,3 @@ class App extends StatelessWidget {
     );
   }
 }
-
-/// Home Page of our example app.
-
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ), //Appbar
-      body: Center(
-        child: Text("This is the home page of the app"),
-      ), //Center
-    ); //Scaffold
-  }
-}
-
-/* import 'package:flutter/material.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Just a list"),
-        ),
-       body: Card(child: Column(children: <Widget>[
-          Image.asset('assets/pic.jpg'),
-          Text('This is Security'),  
-        ],),)
-      ),
-    );
-  }
-}
- */
