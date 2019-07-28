@@ -64,16 +64,13 @@ class BodyWidgetState extends State<BodyWidget> {
     }
   }
 
-  Widget _boxLevel(BoxDecoration box, SvgPicture img, Alignment align, Widget Function(BuildContext) test)
-  {
-     return GestureDetector(
-       onTap: () {
-          Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: test));
-       },
-            child: Align(
+  Widget _boxLevel(BoxDecoration box, SvgPicture img, Alignment align,
+      Widget Function(BuildContext) test) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: test));
+      },
+      child: Align(
         child: Container(
           child: Align(
             child: img,
@@ -83,8 +80,8 @@ class BodyWidgetState extends State<BodyWidget> {
           height: 140,
         ),
         alignment: align,
-    ),
-     );
+      ),
+    );
   }
 
   Widget _contentLevel(BuildContext context) {
@@ -97,9 +94,9 @@ class BodyWidgetState extends State<BodyWidget> {
               height: 60,
             ),
             onTap: () {
-             setState(() {
-              selectedWidgetMarker = WidgetMarker.main; 
-             });
+              setState(() {
+                selectedWidgetMarker = WidgetMarker.main;
+              });
             },
           ),
           alignment: Alignment(-0.85, -0.9),
@@ -118,12 +115,22 @@ class BodyWidgetState extends State<BodyWidget> {
           ),
           alignment: Alignment(0.3, -0.9),
         ),
-        _boxLevel(gradientBorderRadiusDecoration(), SvgPicture.asset(globusPic, height: 110,), Alignment(0,-0.55), ((context) =>
-                        App_Ed())),
-        _boxLevel(gradientBorderRadiusGreenDecoration(), SvgPicture.asset(imagePath, height: 110), Alignment(0,0.03), null),
-        _boxLevel(gradientBorderRadiusRedDecoration(), SvgPicture.asset(swordPic, height: 110), Alignment(0,0.62), ((context) =>
-                        PasswordAttackPage(getRandomPerson()))),
-         bottomNavig(context, Alignment(0, 0))
+        _boxLevel(
+            gradientBorderRadiusDecoration(),
+            SvgPicture.asset(
+              globusPic,
+              height: 110,
+            ),
+            Alignment(0, -0.55),
+            ((context) => App_Ed())),
+        _boxLevel(gradientBorderRadiusGreenDecoration(),
+            SvgPicture.asset(imagePath, height: 110), Alignment(0, 0.03), null),
+        _boxLevel(
+            gradientBorderRadiusRedDecoration(),
+            SvgPicture.asset(swordPic, height: 110),
+            Alignment(0, 0.62),
+            ((context) => PasswordAttackPage(getRandomPerson()))),
+        bottomNavig(context, Alignment(0, 0))
       ],
     );
   }
@@ -241,25 +248,42 @@ class BodyWidgetState extends State<BodyWidget> {
       children: <Widget>[
         Container(
           color: Colors.white,
-          height: 70,
+          height: 100,
           child: Row(
             children: <Widget>[
               Align(
-                child: SvgPicture.asset(
-                  avatarPic,
-                  height: 50,
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {});
+                  },
+                  child: SvgPicture.asset(
+                    avatarPic,
+                    height: 50,
+                  ),
                 ),
               ),
               Align(
-                child: SvgPicture.asset(
-                  playerButtonPic,
-                  height: 50,
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedWidgetMarker = WidgetMarker.main;
+                    });
+                  },
+                  child: SvgPicture.asset(
+                    playerButtonPic,
+                    height: 50,
+                  ),
                 ),
               ),
               Align(
-                child: SvgPicture.asset(
-                  settingPic,
-                  height: 50,
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {});
+                  },
+                  child: SvgPicture.asset(
+                    settingPic,
+                    height: 50,
+                  ),
                 ),
               ),
             ],
