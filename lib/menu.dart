@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hello_world/levels/password/persons.dart';
 import 'levels/password/attack.dart';
 import 'general/strings.dart';
+import 'education.dart';
 import 'general/gradientdecoration.dart';
 import 'models/person.dart';
 
@@ -117,7 +118,8 @@ class BodyWidgetState extends State<BodyWidget> {
           ),
           alignment: Alignment(0.3, -0.9),
         ),
-        _boxLevel(gradientBorderRadiusDecoration(), SvgPicture.asset(globusPic, height: 110,), Alignment(0,-0.55), null),
+        _boxLevel(gradientBorderRadiusDecoration(), SvgPicture.asset(globusPic, height: 110,), Alignment(0,-0.55), ((context) =>
+                        App_Ed())),
         _boxLevel(gradientBorderRadiusGreenDecoration(), SvgPicture.asset(imagePath, height: 110), Alignment(0,0.03), null),
         _boxLevel(gradientBorderRadiusRedDecoration(), SvgPicture.asset(swordPic, height: 110), Alignment(0,0.62), ((context) =>
                         PasswordAttackPage(getRandomPerson()))),

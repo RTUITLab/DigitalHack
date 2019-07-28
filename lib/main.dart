@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hello_world/levels/password/attack.dart';
 import 'general/strings.dart';
 import 'Intro.dart';
+import 'Education.dart';
 import 'general/gradientdecoration.dart';
 
 void main() => runApp(MyApp());
