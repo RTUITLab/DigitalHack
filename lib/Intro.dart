@@ -19,19 +19,48 @@ class App extends StatelessWidget {
         title: Text(''),
         textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 18),
         mainImage: Stack(children: <Widget>[
-
+        
+      
+      Opacity(child: Align(child: SvgPicture.asset(
+        'assets/lock.svg',
+        height: 30.0,
+        width: 30.0,
+        
+      ),
+      alignment: new Alignment(0.10, -0.6),
+      ),
+      opacity: 0.5,)
+      ,
+      Opacity(child: Align(child: SvgPicture.asset(
+        'assets/lock.svg',
+        height: 50.0,
+        width: 50.0,
+        
+      ),
+      alignment: new Alignment(-0.5, -0.9),
+      ),
+      opacity: 0.8,)
+      ,
+      Align(child: SvgPicture.asset(
+        'assets/lock.svg',
+        height: 70.0,
+        width: 70.0,
+      ),
+      alignment: new Alignment(0.5, -1.2),
+      ),
+      
         Align(child: SvgPicture.asset(
         'assets/SafeHack_Logo.svg',
         height: 150.0,
         width: 150.0,
       ),
-      alignment: new Alignment(-0.50, 0),
+      alignment: new Alignment(-0.50, 0.1),
       ),
       Align(child: Text('Safe \n Hack', style: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 50), textAlign: TextAlign.center,),
-      alignment: new Alignment(0.55, 0),
+      alignment: new Alignment(0.55, 0.1),
       ),
-      Align(child: Text('Повышай уровень знаний - повышай рейтинг!', style: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 24), textAlign: TextAlign.center,),
-      alignment: new Alignment(0, 1.3),
+      Align(child: Text('О киберугрозах - безопасно!', style: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 24), textAlign: TextAlign.center,),
+      alignment: new Alignment(0, 1.15),
       ),
       
       ],
@@ -189,6 +218,8 @@ class App extends StatelessWidget {
       home: Builder(
         builder: (context) => IntroViewsFlutter(
           pages,
+           skipText: Text('Далее'),
+           doneText: Text('Начать'),
           onTapDoneButton: () {
             Navigator.push(
               context,
