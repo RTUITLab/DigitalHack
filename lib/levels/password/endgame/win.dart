@@ -6,6 +6,9 @@ import 'package:hello_world/general/strings.dart';
 import '../../../menu.dart';
 
 class WinPasswordAttackGame extends StatelessWidget {
+  final String password;
+  WinPasswordAttackGame(this.password);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,9 +28,12 @@ class WinPasswordAttackGame extends StatelessWidget {
               ),
               Align(
                   alignment: Alignment(0, -0.1),
-                  child: SvgPicture.asset(
-                    goalPic,
-                    height: 300,
+                  child: Hero(
+                    child: SvgPicture.asset(
+                      goalPic,
+                      height: 300,
+                    ),
+                    tag: 'goal',
                   )),
               Align(
                 alignment: Alignment(0, 0.5),
@@ -60,6 +66,17 @@ class WinPasswordAttackGame extends StatelessWidget {
                     lockPic,
                     height: 40,
                   )),
+              Align(
+                alignment: Alignment(0, -0.6),
+                child: Hero(
+                  child: Text(
+                    password,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white, fontSize: 30, fontFamily: fontFamilyBold, fontStyle: FontStyle.italic),
+                  ),
+                  tag: 'correct-password',
+                ),
+              )
             ],
           ),
         ),

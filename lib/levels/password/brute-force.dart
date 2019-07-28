@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hello_world/general/gradientdecoration.dart';
 import 'package:hello_world/general/strings.dart';
 import 'package:hello_world/levels/password/endgame/win.dart';
@@ -41,7 +42,7 @@ class BruteForceState extends State<BruteForce> {
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(Duration(milliseconds: 500), (timer) => _tick());
+    _timer = Timer.periodic(Duration(milliseconds: 600), (timer) => _tick());
   }
 
   @override
@@ -53,16 +54,119 @@ class BruteForceState extends State<BruteForce> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.only(top: 40),
-        decoration: gradientDecoration,
-        child: Column(children: [_lexems(), _checkProgress()]),
+        body: Container(
+            padding: const EdgeInsets.only(top: 40),
+            decoration: gradientDecoration,
+            child: _lexems2()));
+  }
+
+  Widget _lexems2() {
+    var inners = List<Align>();
+    inners.add(Align(
+      alignment: Alignment(-0.4, 0.85),
+      child: Hero(
+        child: SvgPicture.asset(
+          goalPic,
+          height: 50,
+        ),
+        tag: 'goal',
       ),
-    );
+    ));
+    inners.add(Align(
+      alignment: Alignment(0.4, 0.85),
+      child: Hero(
+        child: SvgPicture.asset(
+          bugPic,
+          height: 50,
+        ),
+        tag: 'bug',
+      ),
+    ));
+    inners.add(Align(
+        alignment: Alignment(0, -0.88),
+        child: Text(
+          'Подбор пароля ${(100 * (1 - checksLeft / totalchecks)).floor()}%',
+          style: TextStyle(fontFamily: fontFamilyLight, fontSize: 40),
+        )));
+    inners.add(Align(
+        alignment: Alignment(0, -0.7),
+        child: LinearProgressIndicator(
+          value: 1 - checksLeft / totalchecks,
+        )));
+    for (var i = 0; i < 9; i++) {
+      if (i == 4) {
+        inners.add(Align(
+            alignment: Alignment(0, (-1 + i / 4) * 0.6),
+            child: Opacity(
+              opacity:
+                  i < 4 ? 1 / 5 + (i) / 5 : i > 4 ? 1 / 5 + (8 - i) / 5 : 1,
+              child: Container(
+                width: 300,
+                padding: const EdgeInsets.all(3),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.grey)),
+                child: Hero(
+                    tag: 'correct-password',
+                    child: Text(
+                      '${lexems[index1]}${lexems[index2]}',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.black, fontSize: 30),
+                    )),
+              ),
+            )));
+        continue;
+      }
+      inners.add(Align(
+          alignment: Alignment(-0.6, (-1 + i / 4) * 0.6),
+          child: Opacity(
+            opacity: i < 4 ? 1 / 5 + (i) / 5 : i > 4 ? 1 / 5 + (8 - i) / 5 : 1,
+            child: Container(
+                width: 150,
+                padding: const EdgeInsets.all(3),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.grey)),
+                child: Text(
+                  _getPasswordFor(index1, i),
+                  textAlign: TextAlign.right,
+                  style: TextStyle(color: Colors.black, fontSize: 25),
+                )),
+          )));
+      inners.add(Align(
+          alignment: Alignment(0.6, (-1 + i / 4) * 0.6),
+          child: Opacity(
+            opacity: i < 4 ? 1 / 5 + (i) / 5 : i > 4 ? 1 / 5 + (8 - i) / 5 : 1,
+            child: Container(
+                width: 150,
+                padding: const EdgeInsets.all(3),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.grey)),
+                child: Text(
+                  _getPasswordFor(index2, i),
+                  style: TextStyle(color: Colors.black, fontSize: 25),
+                )),
+          )));
+    }
+    return Stack(children: inners);
+  }
+
+  String _getPasswordFor(int passIndex, int placeIndex) {
+    placeIndex = placeIndex - 4;
+    passIndex = placeIndex + passIndex;
+    while (passIndex < 0) {
+      passIndex += lexems.length;
+    }
+    while (passIndex >= lexems.length) {
+      passIndex -= lexems.length;
+    }
+    return '$passIndex : ${lexems[passIndex]}';
   }
 
   Widget _lexems() {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[_leftLexems(), _rightLexems()],
     );
@@ -195,9 +299,14 @@ class BruteForceState extends State<BruteForce> {
       }
 
       if (lexems[index1] + lexems[index2] == password) {
-        Navigator.pushReplacement(
+        _timer.cancel();
+        Timer.periodic(Duration(seconds: 1), (timer) {
+          timer.cancel();
+          Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (builder) => WinPasswordAttackGame()));
+            MaterialPageRoute(
+                builder: (builder) => WinPasswordAttackGame(password)));
+        });
       }
     });
   }

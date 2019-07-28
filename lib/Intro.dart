@@ -11,65 +11,74 @@ class App extends StatelessWidget {
   //making list of pages needed to pass in IntroViewsFlutter constructor.
   final pages = [
     PageViewModel(
-        pageColor: const Color(0xFF03A9F4),
-        // iconImageAssetPath: 'assets/air-hostess.png',
-        // bubble: Image.asset('assets/air-hostess.png'),
-        body: Text(
-          'Проходите уровни и узновайте что-то новое о кибербезопасности каждый день',
-        ),
-        title: Text(''),
-        textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 18),
-        mainImage: Stack(children: <Widget>[
-        
-      
-      Opacity(child: Align(child: SvgPicture.asset(
-        'assets/lock.svg',
-        height: 30.0,
-        width: 30.0,
-        
+      pageColor: const Color(0xFF03A9F4),
+      body: Text(
+        'Проходите уровни и узновайте что-то новое о кибербезопасности каждый день',
       ),
-      alignment: new Alignment(0.10, -0.6),
+      title: Text(''),
+      textStyle:
+          TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 18),
+      mainImage: Stack(
+        children: <Widget>[
+          Opacity(
+            child: Align(
+              child: SvgPicture.asset(
+                'assets/lock.svg',
+                height: 30.0,
+                width: 30.0,
+              ),
+              alignment: new Alignment(0.10, -0.6),
+            ),
+            opacity: 0.5,
+          ),
+          Opacity(
+            child: Align(
+              child: SvgPicture.asset(
+                'assets/lock.svg',
+                height: 50.0,
+                width: 50.0,
+              ),
+              alignment: new Alignment(-0.5, -0.9),
+            ),
+            opacity: 0.8,
+          ),
+          Align(
+            child: SvgPicture.asset(
+              'assets/lock.svg',
+              height: 70.0,
+              width: 70.0,
+            ),
+            alignment: new Alignment(0.5, -1.2),
+          ),
+          Align(
+            child: SvgPicture.asset(
+              'assets/SafeHack_Logo.svg',
+              height: 150.0,
+              width: 150.0,
+            ),
+            alignment: new Alignment(-0.50, 0.1),
+          ),
+          Align(
+            child: Text(
+              'Safe \n Hack',
+              style: TextStyle(
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 50),
+              textAlign: TextAlign.center,
+            ),
+            alignment: new Alignment(0.55, 0.1),
+          ),
+          Align(
+            child: Text(
+              'О киберугрозах\n- безопасно!',
+              style: TextStyle(
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 28),
+              textAlign: TextAlign.center,
+            ),
+            alignment: new Alignment(0, 1.15),
+          ),
+        ],
       ),
-      opacity: 0.5,)
-      ,
-      Opacity(child: Align(child: SvgPicture.asset(
-        'assets/lock.svg',
-        height: 50.0,
-        width: 50.0,
-        
-      ),
-      alignment: new Alignment(-0.5, -0.9),
-      ),
-      opacity: 0.8,)
-      ,
-      Align(child: SvgPicture.asset(
-        'assets/lock.svg',
-        height: 70.0,
-        width: 70.0,
-      ),
-      alignment: new Alignment(0.5, -1.2),
-      ),
-      
-        Align(child: SvgPicture.asset(
-        'assets/SafeHack_Logo.svg',
-        height: 150.0,
-        width: 150.0,
-      ),
-      alignment: new Alignment(-0.50, 0.1),
-      ),
-      Align(child: Text('Safe \n Hack', style: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 50), textAlign: TextAlign.center,),
-      alignment: new Alignment(0.55, 0.1),
-      ),
-      Align(child: Text('О киберугрозах\n- безопасно!', style: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 28), textAlign: TextAlign.center,),
-      alignment: new Alignment(0, 1.15),
-      ),
-      
-      ],
-      ),
-        ),
-  
-
-
+    ),
     PageViewModel(
       pageColor: const Color(0xFF8BC34A),
       body: Text(
@@ -294,23 +303,18 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntroViewsFlutter(
-          pages,
-           skipText: Text('Далее'),
-           doneText: Text('Начать'),
-          onTapDoneButton: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => MainMenuPage(),
-              ), //MaterialPageRoute
-            );
-          },
-          pageButtonTextStyles: TextStyle(
-            color: Colors.white,
-            fontSize: 18.0,
-          ));
-        
-          
+    return IntroViewsFlutter(pages,
+        skipText: Text('Далее'), doneText: Text('Начать'), onTapDoneButton: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MainMenuPage(),
+        ), //MaterialPageRoute
+      );
+    },
+        pageButtonTextStyles: TextStyle(
+          color: Colors.white,
+          fontSize: 18.0,
+        ));
   }
 }

@@ -191,8 +191,6 @@ class PasswordAttackState extends State<PasswordAttackPage> {
               style: TextStyle(color: Colors.white, fontSize: 32,),
             ),
             onPressed: () {
-              print(lexems);
-              print(lexems.length);
               if (lexems.length < 2) {
                 showDialog(
                     context: context,
@@ -228,7 +226,7 @@ class PasswordAttackState extends State<PasswordAttackPage> {
                     width: 250,
                     child: TextField(
                       style: TextStyle(fontSize: 20),
-                      decoration: InputDecoration(),
+                      decoration: InputDecoration(filled: true, fillColor: Colors.white),
                       controller: lexemsController,
                     ),
                   ),

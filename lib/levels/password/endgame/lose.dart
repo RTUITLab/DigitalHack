@@ -25,9 +25,12 @@ class LosePasswordAttackGame extends StatelessWidget {
               ),
               Align(
                   alignment: Alignment(0, -0.1),
-                  child: SvgPicture.asset(
-                    bugPic,
-                    height: 300,
+                  child: Hero(
+                    tag: 'bug',
+                    child: SvgPicture.asset(
+                      bugPic,
+                      height: 300,
+                    ),
                   )),
               Align(
                 alignment: Alignment(0, 0.5),
