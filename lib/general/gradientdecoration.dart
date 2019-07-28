@@ -44,18 +44,22 @@ BoxDecoration gradientBorderRadiusDecoration() => BoxDecoration(
   borderRadius: BorderRadius.all(Radius.circular(40))
 );
 
-BoxDecoration CurcleDecoration() => BoxDecoration(
+BoxDecoration gradientBorderRadiusNotActiveDecoration() => BoxDecoration(
   gradient: LinearGradient(
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
-    stops: [0.1, 0.2, 0.3, 0.9],
+    stops: [0.1, 0.5],
     colors: [
-      Colors.yellow[400],
-      Colors.yellow[500],
-      Colors.yellow[600],
-      Colors.yellow[800],
+        Colors.brown[200],
+      Colors.brown[300]
     ],
   ),
   border: Border.all(width: 0, color: Color.fromARGB(0, 0, 0, 0)),
   borderRadius: BorderRadius.all(Radius.circular(40))
+);
+
+BoxDecoration curcleDecoration(Color colorB) => BoxDecoration(
+ color: colorB,
+  border: Border.all(width: 0, color: Color.fromARGB(0, 0, 0, 0)),
+  borderRadius: BorderRadius.all(Radius.circular(100))
 );
