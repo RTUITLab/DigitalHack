@@ -84,9 +84,9 @@ class PasswordAttackState extends State<PasswordAttackPage> {
           child: Text(
             "4",
             style: TextStyle(
-                color: Colors.blueAccent,
+                color: Colors.grey,
                 fontFamily: fontFamilyBold,
-                fontSize: 26),
+                fontSize: 40),
           ),
           alignment: Alignment(0.90, 0.0),
         )
@@ -112,7 +112,7 @@ class PasswordAttackState extends State<PasswordAttackPage> {
             SizedBox(
               width: 200,
               child: Text(
-                '${attackedPerson.birthDay} На своей странице указала, что любит фотографировать, ведет блог в Instagram под ником freya.',
+                '${attackedPerson.birthDay}\nНа своей странице указала, что любит фотографировать, ведет блог в Instagram под ником freya.',
                 style: TextStyle(fontSize: 19, fontFamily: fontFamilyLight),
                 textAlign: TextAlign.center,
                 softWrap: true,
@@ -135,7 +135,7 @@ class PasswordAttackState extends State<PasswordAttackPage> {
               width: 350,
               child: Text(
                 'Создайте словарь для brute-force утилиты, чтобы с её помощью подобрать пароль к странице Ани',
-                style: TextStyle(fontSize: 17, fontFamily: fontFamilyBold),
+                style: TextStyle(fontSize: 26, fontFamily: fontFamilyBold),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -162,8 +162,8 @@ class PasswordAttackState extends State<PasswordAttackPage> {
                       child: Text(
                         'Аня не подкована в кибербезопасности и не знает, что нельзя использовать в паролях открытую информацию, такую как фамилия, дата рождения, никнеймы и т.п. ',
                         style: TextStyle(
-                            fontSize: 17, fontFamily: fontFamilyLight),
-                        textAlign: TextAlign.justify,
+                            fontSize: 22, fontFamily: fontFamilyLight),
+                        textAlign: TextAlign.left,
                         softWrap: true,
                       ),
                     ),
@@ -182,11 +182,13 @@ class PasswordAttackState extends State<PasswordAttackPage> {
     return Column(
       children: <Widget>[
         Container(
-          margin: EdgeInsets.only(top: 10),
+          width: 290,
+          height: 60,
+          margin: EdgeInsets.only(top: 20, bottom: 5),
           child: RaisedButton(
             child: Text(
               'Запустить утилиту',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.white, fontSize: 32,),
             ),
             onPressed: () {
               print(lexems);
@@ -211,9 +213,10 @@ class PasswordAttackState extends State<PasswordAttackPage> {
         Container(
           child: Text(
             'Колличество лексем: ${lexems.length}',
-            style: TextStyle(fontFamily: fontFamilyBold, fontSize: 15),
+            style: TextStyle(fontFamily: fontFamilyBold, fontSize: 22),
           ),
-          margin: EdgeInsets.only(top: 20, bottom: 10),
+          margin: EdgeInsets.only(top: 20, bottom: 10, left: 28),
+          alignment: Alignment.centerLeft,
         ),
         Container(
           child: Row(
@@ -232,7 +235,7 @@ class PasswordAttackState extends State<PasswordAttackPage> {
                 ),
               ),
               RaisedButton(
-                child: Text('Добавить'),
+                child: Text('Добавить', style: TextStyle(fontSize: 22),),
                 color: Colors.yellow,
                 shape: StadiumBorder(),
                 onPressed: () {
