@@ -52,7 +52,7 @@ class MainPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          PasswordAttackPage(Person(name: 'Alice', phoneMumber: '+7 800 555 35 35'))));
+                          PasswordAttackPage(Person(name: 'Аня Иванова', birthDay: '7 июля 2002'))));
             },
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),

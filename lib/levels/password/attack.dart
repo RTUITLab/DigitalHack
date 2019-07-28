@@ -4,6 +4,8 @@ import 'package:hello_world/general/gradientdecoration.dart';
 import 'package:hello_world/general/strings.dart';
 import 'package:hello_world/models/person.dart';
 
+import 'brute-force.dart';
+
 class PasswordAttackPage extends StatefulWidget {
   final Person attackedPerson;
 
@@ -17,24 +19,35 @@ class PasswordAttackPage extends StatefulWidget {
 
 class PasswordAttackState extends State<PasswordAttackPage> {
   final Person attackedPerson;
+  final lexems = new Set<String>();
+  final lexemsController = TextEditingController();
 
   PasswordAttackState(this.attackedPerson);
 
   @override
+  void dispose() {
+    lexemsController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // type: MaterialType.card,
       body: Container(
           padding: const EdgeInsets.only(top: 30),
           decoration: gradientDecoration,
           child: _page(context)),
     );
-    //  Container(decoration: gradientDecoration, child: _userInfo()));
   }
 
   Widget _page(BuildContext context) {
     return ListView(
-      children: <Widget>[_header(context), _userInfo(), _taskText(), _lexemsForm()],
+      children: <Widget>[
+        _header(context),
+        _userInfo(),
+        _taskText(),
+        _lexemsForm()
+      ],
     );
   }
 
@@ -73,12 +86,12 @@ class PasswordAttackState extends State<PasswordAttackPage> {
         Column(
           children: <Widget>[
             Text(
-              'Аня Иванова',
+              attackedPerson.name,
               style: TextStyle(fontSize: 17, fontFamily: fontFamilyBold),
               textAlign: TextAlign.center,
             ),
             Text(
-              '07 июля 2002 \nНа своей странице \nуказала, что любит\nфотографировать,\nведет блог в Instagram\nпод ником freya.',
+              "${attackedPerson.birthDay}\nНа своей странице \nуказала, что любит\nфотографировать,\nведет блог в Instagram\nпод ником freya.",
               style: TextStyle(fontSize: 17, fontFamily: fontFamilyLight),
               textAlign: TextAlign.center,
             )
@@ -132,6 +145,7 @@ class PasswordAttackState extends State<PasswordAttackPage> {
           children: <Widget>[
             Flexible(
               child: TextField(
+                controller: lexemsController,
                 decoration: InputDecoration(),
               ),
             ),
@@ -139,7 +153,14 @@ class PasswordAttackState extends State<PasswordAttackPage> {
               child: Text('Добавить'),
               color: Colors.yellow,
               shape: StadiumBorder(),
-              onPressed: () => print('12345'),
+              onPressed: () {
+                if (lexems.contains(lexemsController.text)) {
+                  print('INCORRECT VALUE');
+                  // Света сказала что при вводе повторяющийся лексемы надо орять на пользователя, я хз как.
+                }
+                lexems.add(lexemsController.text);
+                lexemsController.text = '';
+              },
             )
           ],
         ),
@@ -148,9 +169,23 @@ class PasswordAttackState extends State<PasswordAttackPage> {
             'Запустить утилиту',
             style: TextStyle(color: Colors.white),
           ),
-          onPressed: () => print('123'),
+          onPressed: () {
+            print(lexems);
+            print(lexems.length);
+            if (lexems.length < 2) {
+              showDialog(
+                  context: context,
+                  builder: (builder) => AlertDialog(
+                        title: Text('Необходимо ввести как минимум два слова'),
+                      ));
+              return;
+            }
+            Navigator.push(context, MaterialPageRoute(builder: (builder) {
+              return BruteForce(lexems);
+            }));
+          },
           shape: StadiumBorder(),
-          color: Colors.blue,
+          color: Colors.blue, 
         )
       ],
     );
