@@ -22,6 +22,60 @@ class App_Ed extends StatelessWidget {
         mainImage: Stack(children: <Widget>[
       
       Align(child: SvgPicture.asset(
+        'assets/earth-globe.svg',
+        height: 200.0,
+        width: 200.0,
+      ),alignment: new Alignment(0, -0.2),),
+      
+      Opacity(child: Align(child: SvgPicture.asset(
+        'assets/earth-globe.svg',
+        height: 150.0,
+        width: 150.0,
+      ),alignment: new Alignment(1, 0.6),),opacity: 0.8,),
+      
+      Opacity(child: Align(child: SvgPicture.asset(
+        'assets/earth-globe.svg',
+        height: 110.0,
+        width: 110.0,
+      ),alignment: new Alignment(-0.6, 1),),opacity: 0.5,),
+
+      Align(
+            child: Text(
+              'А вы знали, что...?',
+              style: TextStyle(
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 30),
+              textAlign: TextAlign.center,
+            ),
+            alignment: new Alignment(0, 1.62),
+          ),
+
+      Align(
+            child: Text(
+              'Уровень 1\nПароли',
+              style: TextStyle(
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 50),
+              textAlign: TextAlign.center,
+            ),
+            alignment: new Alignment(0, -1.5),
+          ),
+      ],
+      ),
+        ),
+  
+
+
+    PageViewModel(
+      pageColor: const Color(0xFFD49703),
+        // iconImageAssetPath: 'assets/air-hostess.png',
+        // bubble: Image.asset('assets/air-hostess.png'),
+        body: Text(
+          '',
+        ),
+        title: Text(''),
+        textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 18),
+        mainImage: Stack(children: <Widget>[
+      
+      Align(child: SvgPicture.asset(
         'assets/white_circle.svg',
         height: 250.0,
         width: 250.0,
@@ -62,234 +116,131 @@ class App_Ed extends StatelessWidget {
                   fontFamily: 'MyFont', color: Colors.white, fontSize: 30),
               textAlign: TextAlign.center,
             ),
-            alignment: new Alignment(0, -1.25),
+            alignment: new Alignment(0, -1.2),
           ),
       ],
       ),
         ),
-  
-
-
     PageViewModel(
-      pageColor: const Color(0xFF8BC34A),
-      body: Text(
-        'Изучайте компьютерную грамотность, криптографию и основы иноформативной безопасности',
-        style: TextStyle(fontSize: 18),
-      ),
-      title: Text(''),
-      mainImage: Stack(
-        children: <Widget>[
-          Align(
-            child: SvgPicture.asset(
-              'assets/computer.svg',
-              height: 285.0,
-              width: 285.0,
-              //alignment: Alignment.center,
+      pageColor: const Color(0xFFD49703),
+        // iconImageAssetPath: 'assets/air-hostess.png',
+        // bubble: Image.asset('assets/air-hostess.png'),
+        body: Text(
+          '',
+        ),
+        title: Text(''),
+        textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 18),
+        mainImage: Stack(children: <Widget>[
+    
+      Align(child: SvgPicture.asset(
+        'assets/fist.svg',
+        height: 120.0,
+        width: 120.0,
+      ),alignment: new Alignment(-0.9, -0.6),),
+      Align(child: SvgPicture.asset(
+        'assets/nerd.svg',
+        height: 100.0,
+        width: 100.0,
+      ),alignment: new Alignment(0.8, 1),),
+      Align(
+            child: Text(
+              'Brute-force (атака\nполным перебором)\n- метод решения\nматематических\nзадач, сложность\nкоторого зависит\n от количества всех\nвозможных решений.',
+              style: TextStyle(
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 24), 
+              textAlign: TextAlign.right,
             ),
-            alignment: new Alignment(0, 0),
+            alignment: new Alignment(0.7, -0.9),
           ),
-          Align(
-            child: SvgPicture.asset(
-              'assets/swordcircle.svg',
-              height: 130.0,
-              width: 130.0,
+      Align(
+            child: Text(
+              'Программно\nреализованный\nметод brute-force\nиспользуется для\nвзлома паролей,\nпутем перебора\nвсех возможных\nкомбинаций символов',
+              style: TextStyle(
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 24),
+              textAlign: TextAlign.left,
+            ),
+            alignment: new Alignment(-0.7, 1.6),
+          ),
+        Align(
+            child: Text(
+              'Что же дальше?',
+              style: TextStyle(
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 25),
+              textAlign: TextAlign.center,
+            ),
+            alignment: new Alignment(0, 1.75),
+          ),
+      Align(
+            child: Text(
+              'Что такое\nbrute-force?',
+              style: TextStyle(
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 40),
+              textAlign: TextAlign.center,
+            ),
+            alignment: new Alignment(0, -1.7),
+          ),
+      ],
+      ),
+        ),
+    PageViewModel(
+      pageColor: const Color(0xFFD49703),
+        // iconImageAssetPath: 'assets/air-hostess.png',
+        // bubble: Image.asset('assets/air-hostess.png'),
+        body: Text(
+          '',
+        ),
+        title: Text(''),
+        textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 18),
+        mainImage: Stack(children: <Widget>[
+    
+      Align(child: SvgPicture.asset(
+        'assets/hourglass.svg',
+        height: 120.0,
+        width: 120.0,
+      ),alignment: new Alignment(0.8, -0.2),),
+      Align(child: SvgPicture.asset(
+        'assets/calendar.svg',
+        height: 100.0,
+        width: 100.0,
+      ),alignment: new Alignment(-0.8, 1.5),),
+      Align(
+            child: Text(
+              'Чтобы взломать пароль из 4 символов верхнего и нижнего регистра, обычному компьютеру нужно',
+              style: TextStyle(
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 30), 
+              textAlign: TextAlign.left,
+            ),
+            alignment: new Alignment(0.7, -1.4),
+          ),
+      Align(
+            child: Text(
+              'Тогда как на пароль из 8 символов с добавлением специальных симыолов нужно',
+              style: TextStyle(
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 30),
+              textAlign: TextAlign.right,
             ),
             alignment: new Alignment(-0.7, 0.8),
           ),
-          Align(
-            child: SvgPicture.asset(
-              'assets/SafeHack_Logo.svg',
-              height: 70.0,
-              width: 70.0,
-            ),
-            alignment: new Alignment(-0.2, -1.7),
-          ),
-          Align(
+        Align(
             child: Text(
-              'Safe \n Hack',
+              '12 дней',
               style: TextStyle(
-                  fontFamily: 'MyFont', color: Colors.white, fontSize: 26),
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 50),
               textAlign: TextAlign.center,
             ),
-            alignment: new Alignment(0.2, -1.65),
+            alignment: new Alignment(0.6, 1.35),
           ),
-          Align(
+      Align(
             child: Text(
-              'Два режима игры!\nЛучшая защита - это нападение.',
+              '2 минуты!',
               style: TextStyle(
-                  fontFamily: 'MyFont', color: Colors.white, fontSize: 24),
+                  fontFamily: 'MyFont', color: Colors.white, fontSize: 50),
               textAlign: TextAlign.center,
             ),
-            alignment: new Alignment(0, 1.3),
+            alignment: new Alignment(-0.8, -0.2),
           ),
-        ],
+      ],
       ),
-      textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
-    ),
-    PageViewModel(
-      pageColor: const Color(0xFF607D8B),
-      body: Text(
-        'Только полезная информация. Обучение от простого к сложному на интерактивных примерах и логических задачах.',
-        style: TextStyle(fontSize: 18),
-      ),
-      title: Text(''),
-      mainImage: Stack(
-        children: <Widget>[
-          Align(
-            child: SvgPicture.asset(
-              'assets/flowchart.svg',
-              height: 150.0,
-              width: 150.0,
-              //alignment: Alignment.center,
-            ),
-            alignment: new Alignment(-0.7, 0.2),
-          ),
-          Align(
-            child: SvgPicture.asset(
-              'assets/debugging.svg',
-              height: 150.0,
-              width: 150.0,
-            ),
-            alignment: new Alignment(0.6, 0.8),
-          ),
-          Align(
-            child: SvgPicture.asset(
-              'assets/coding.svg',
-              height: 150.0,
-              width: 150.0,
-            ),
-            alignment: new Alignment(0.6, -0.5),
-          ),
-          Align(
-            child: SvgPicture.asset(
-              'assets/SafeHack_Logo.svg',
-              height: 70.0,
-              width: 70.0,
-            ),
-            alignment: new Alignment(-0.2, -1.65),
-          ),
-          Align(
-            child: Text(
-              'Safe \n Hack',
-              style: TextStyle(
-                  fontFamily: 'MyFont', color: Colors.white, fontSize: 26),
-              textAlign: TextAlign.center,
-            ),
-            alignment: new Alignment(0.2, -1.6),
-          ),
-          Align(
-            child: Text(
-              'Актуальные вопросы кибербезопасности!',
-              style: TextStyle(
-                  fontFamily: 'MyFont', color: Colors.white, fontSize: 24),
-              textAlign: TextAlign.center,
-            ),
-            alignment: new Alignment(0, 1.3),
-          ),
-        ],
-      ),
-      textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
-    ),
-    PageViewModel(
-      pageColor: const Color(0xFF8BC34A),
-      body: Text(
-        'Соревнуйся с друзьсями, зарабатывай BIGcoin\'ы, используйте подсказкиб делая свою жизнь в интернете безопаснее!',
-        style: TextStyle(fontSize: 18),
-      ),
-      title: Text(''),
-      mainImage: Stack(
-        children: <Widget>[
-          Align(
-            child: SvgPicture.asset(
-              'assets/statscircle.svg',
-              height: 250.0,
-              width: 250.0,
-              //alignment: Alignment.center,
-            ),
-            alignment: new Alignment(0, 0),
-          ),
-          Opacity(child: Align(
-            child: SvgPicture.asset(
-              'assets/coin.svg',
-              height: 50.0,
-              width: 50.0,
-            ),
-            alignment: new Alignment(-0.7, 0.6),
-          ), opacity: 0.5,)
-          ,
-          Opacity(child: Align(
-            child: SvgPicture.asset(
-              'assets/coin.svg',
-              height: 40.0,
-              width: 40.0,
-            ),
-            alignment: new Alignment(-0.1, 0.9),
-          ), opacity: 0.8,)
-          ,
-          Align(
-            child: SvgPicture.asset(
-              'assets/coin.svg',
-              height: 60.0,
-              width: 60.0,
-            ),
-            alignment: new Alignment(0.7, 0.7),
-          ),
-          Opacity(child: Align(
-            child: SvgPicture.asset(
-              'assets/light-bulb.svg',
-              height: 40.0,
-              width: 40.0,
-            ),
-            alignment: new Alignment(-0.85, -0.2),
-          ), opacity: 0.5,)
-          ,
-          Opacity(child: Align(
-            child: SvgPicture.asset(
-              'assets/light-bulb.svg',
-              height: 60.0,
-              width: 60.0,
-            ),
-            alignment: new Alignment(-0.3, -0.8),
-          ), opacity: 0.8,)
-          ,
-          Align(
-            child: SvgPicture.asset(
-              'assets/light-bulb.svg',
-              height: 90.0,
-              width: 90.0,
-            ),
-            alignment: new Alignment(0.9, -0.8),
-          ),
-          Align(
-            child: SvgPicture.asset(
-              'assets/SafeHack_Logo.svg',
-              height: 70.0,
-              width: 70.0,
-            ),
-            alignment: new Alignment(-0.2, -1.7),
-          ),
-          Align(
-            child: Text(
-              'Safe \n Hack',
-              style: TextStyle(
-                  fontFamily: 'MyFont', color: Colors.white, fontSize: 26),
-              textAlign: TextAlign.center,
-            ),
-            alignment: new Alignment(0.2, -1.65),
-          ),
-          Align(
-            child: Text(
-              'Повышай уровень знаний - повышай рейтинг!',
-              style: TextStyle(
-                  fontFamily: 'MyFont', color: Colors.white, fontSize: 24),
-              textAlign: TextAlign.center,
-            ),
-            alignment: new Alignment(0, 1.3),
-          ),
-        ],
-      ),
-      textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
-    ),
+        ),
   ];
 
   @override
