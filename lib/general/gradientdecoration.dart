@@ -44,6 +44,38 @@ BoxDecoration gradientBorderRadiusDecoration() => BoxDecoration(
   borderRadius: BorderRadius.all(Radius.circular(40))
 );
 
+BoxDecoration gradientBorderRadiusGreenDecoration() => BoxDecoration(
+  gradient: LinearGradient(
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+    stops: [0.1, 0.2, 0.3, 0.9],
+    colors: [
+      Colors.green[400],
+      Colors.green[500],
+      Colors.green[600],
+      Colors.green[700],
+    ],
+  ),
+  border: Border.all(width: 0, color: Color.fromARGB(0, 0, 0, 0)),
+  borderRadius: BorderRadius.all(Radius.circular(40))
+);
+
+BoxDecoration gradientBorderRadiusRedDecoration() => BoxDecoration(
+  gradient: LinearGradient(
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+    stops: [0.1, 0.2, 0.3, 0.9],
+    colors: [
+      Colors.red[400],
+      Colors.red[500],
+      Colors.red[600],
+      Colors.red[700],
+    ],
+  ),
+  border: Border.all(width: 0, color: Color.fromARGB(0, 0, 0, 0)),
+  borderRadius: BorderRadius.all(Radius.circular(40))
+);
+
 BoxDecoration gradientBorderRadiusNotActiveDecoration() => BoxDecoration(
   gradient: LinearGradient(
     begin: Alignment.centerLeft,
