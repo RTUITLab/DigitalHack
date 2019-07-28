@@ -17,48 +17,58 @@ class App extends StatelessWidget {
           'Проходите уровни и узновайте что-то новое о кибербезопасности каждый день',
         ),
         title: Text(''),
-        textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 18),
-        mainImage: Column(children: <Widget>[
-          Expanded(
-          flex: 3, // 20%
-          child: Text(''),
-        ),
-          Expanded(
-          flex: 8, // 20%
-          child: Row(children: <Widget>[
-          Expanded(
-          flex: 4, // 20%
-          child: Align(
-            child: SvgPicture.asset(
-            'assets/SafeHack_Logo.svg',
-           height: 180.0,
-           width: 180.0,
-          ),),
-          ),
-          Expanded(
-          flex: 3, // 20%
-          child: Align(
-            child: Text(
-            'Safe \n Hack', style: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 50), textAlign: TextAlign.center,),
-            alignment: Alignment.center,
-          ),
-          ),
-        ],
-        ),
-        ),
-
-        Expanded(
-          flex: 2, // 20%
-          child: Align(
-            child: Text(
-            'О киберугрозах - безопасно!', style: TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 30), textAlign: TextAlign.center,),
-          ),
-        ),     
-        ],)
-        ),
-  
-
-
+        textStyle:
+            TextStyle(fontFamily: 'MyFont', color: Colors.white, fontSize: 18),
+        mainImage: Column(
+          children: <Widget>[
+            Expanded(
+              flex: 3, // 20%
+              child: Text(''),
+            ),
+            Expanded(
+              flex: 8, // 20%
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    flex: 4, // 20%
+                    child: Align(
+                      child: SvgPicture.asset(
+                        'assets/SafeHack_Logo.svg',
+                        height: 180.0,
+                        width: 180.0,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 3, // 20%
+                    child: Align(
+                      child: Text(
+                        'Safe \n Hack',
+                        style: TextStyle(
+                            fontFamily: 'MyFont',
+                            color: Colors.white,
+                            fontSize: 50),
+                        textAlign: TextAlign.center,
+                      ),
+                      alignment: Alignment.center,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 2, // 20%
+              child: Align(
+                child: Text(
+                  'О киберугрозах - безопасно!',
+                  style: TextStyle(
+                      fontFamily: 'MyFont', color: Colors.white, fontSize: 30),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ],
+        )),
     PageViewModel(
       pageColor: const Color(0xFF8BC34A),
       body: Text(
@@ -73,8 +83,6 @@ class App extends StatelessWidget {
       // ),
       textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
     ),
-
-
     PageViewModel(
       pageColor: const Color(0xFF607D8B),
       body: Text(
@@ -89,8 +97,6 @@ class App extends StatelessWidget {
       // ),
       textStyle: TextStyle(fontFamily: 'MyFont', color: Colors.white),
     ),
-
-
     PageViewModel(
       pageColor: const Color(0xFF607D8B),
       body: Text(
@@ -109,20 +115,21 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  IntroViewsFlutter(
-          pages,
-          onTapDoneButton: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => PasswordAttackPage(Person(name: 'Alice', birthDay: '07 июля 2002')),
-              ),
-            );
-          },
-          pageButtonTextStyles: TextStyle(
-            color: Colors.white,
-            fontSize: 18.0,
+    return IntroViewsFlutter(
+      pages,
+      onTapDoneButton: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PasswordAttackPage(
+                Person(name: 'Alice', birthDay: '07 июля 2002')),
           ),
+        );
+      },
+      pageButtonTextStyles: TextStyle(
+        color: Colors.white,
+        fontSize: 18.0,
+      ),
     );
   }
 }

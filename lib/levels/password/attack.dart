@@ -236,14 +236,25 @@ class PasswordAttackState extends State<PasswordAttackPage> {
                 color: Colors.yellow,
                 shape: StadiumBorder(),
                 onPressed: () {
-                  if (lexems.contains(lexemsController.text)) {
-                    print('INCORRECT VALUE');
-                    // Света сказала что при вводе повторяющийся лексемы надо орять на пользователя, я хз как.
-                  }
-                  setState(() {
-                    lexems.add(lexemsController.text);
-                    lexemsController.text = '';
-                  });
+                  if (lexemsController.text.trim().isEmpty) {
+                    showDialog(
+                        context: context,
+                        builder: (builder) => AlertDialog(
+                              title:
+                                  Text('Строки только с пробелами недопустимы'),
+                            ));
+                  } else if (lexems.contains(lexemsController.text)) {
+                    showDialog(
+                        context: context,
+                        builder: (builder) => AlertDialog(
+                              title: Text(
+                                  'Данное предположение уже занесено в базу'),
+                            ));
+                  } else
+                    setState(() {
+                      lexems.add(lexemsController.text);
+                    });
+                  lexemsController.text = '';
                 },
               )
             ],
