@@ -183,33 +183,34 @@ class PasswordAttackState extends State<PasswordAttackPage> {
       children: <Widget>[
         Container(
           margin: EdgeInsets.only(top: 10),
-                  child: RaisedButton(
+          child: RaisedButton(
             child: Text(
               'Запустить утилиту',
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () {
-            print(lexems);
-            print(lexems.length);
-            if (lexems.length < 2) {
-              showDialog(
-                  context: context,
-                  builder: (builder) => AlertDialog(
-                        title: Text('Необходимо ввести как минимум два слова'),
-                      ));
-              return;
-            }
-            Navigator.push(context, MaterialPageRoute(builder: (builder) {
-              return BruteForce(lexems);
-            }));
-          },
+              print(lexems);
+              print(lexems.length);
+              if (lexems.length < 2) {
+                showDialog(
+                    context: context,
+                    builder: (builder) => AlertDialog(
+                          title:
+                              Text('Необходимо ввести как минимум два слова'),
+                        ));
+                return;
+              }
+              Navigator.push(context, MaterialPageRoute(builder: (builder) {
+                return BruteForce(lexems);
+              }));
+            },
             shape: StadiumBorder(),
             color: Colors.blue,
           ),
         ),
         Container(
           child: Text(
-            "Колличество лексем: ",
+            'Колличество лексем: ${lexems.length}',
             style: TextStyle(fontFamily: fontFamilyBold, fontSize: 15),
           ),
           margin: EdgeInsets.only(top: 20, bottom: 10),
@@ -225,6 +226,7 @@ class PasswordAttackState extends State<PasswordAttackPage> {
                     child: TextField(
                       style: TextStyle(fontSize: 20),
                       decoration: InputDecoration(),
+                      controller: lexemsController,
                     ),
                   ),
                 ),
@@ -233,7 +235,16 @@ class PasswordAttackState extends State<PasswordAttackPage> {
                 child: Text('Добавить'),
                 color: Colors.yellow,
                 shape: StadiumBorder(),
-                onPressed: () => print('12345'),
+                onPressed: () {
+                  if (lexems.contains(lexemsController.text)) {
+                    print('INCORRECT VALUE');
+                    // Света сказала что при вводе повторяющийся лексемы надо орять на пользователя, я хз как.
+                  }
+                  setState(() {
+                    lexems.add(lexemsController.text);
+                    lexemsController.text = '';
+                  });
+                },
               )
             ],
           ),

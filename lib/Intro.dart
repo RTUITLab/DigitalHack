@@ -109,14 +109,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'IntroViews Flutter', //title of app
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ), //ThemeData
-      home: Builder(
-        builder: (context) => IntroViewsFlutter(
+    return  IntroViewsFlutter(
           pages,
           onTapDoneButton: () {
             Navigator.push(
@@ -130,9 +123,7 @@ class App extends StatelessWidget {
             color: Colors.white,
             fontSize: 18.0,
           ),
-        ), //IntroViewsFlutter
-      ), //Builder
-    ); //Material App
+    );
   }
 }
 
