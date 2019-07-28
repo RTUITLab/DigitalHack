@@ -85,6 +85,31 @@ class BodyWidgetState extends State<BodyWidget> {
     );
   }
 
+Widget _boxNotActive(BoxDecoration box, SvgPicture img, Alignment align, String message)
+{
+  return GestureDetector(
+      onTap: () {
+        showDialog(
+                    context: context,
+                    builder: (builder) => AlertDialog(
+                          title:
+                              Text(message),
+                        ));
+      },
+      child: Align(
+        child: Container(
+          child: Align(
+            child: img,
+          ),
+          decoration: box,
+          width: 350,
+          height: 140,
+        ),
+        alignment: align,
+      ),
+    );
+}
+
   Widget _contentLevel(BuildContext context) {
     return Stack(
       children: <Widget>[
@@ -131,9 +156,11 @@ class BodyWidgetState extends State<BodyWidget> {
               style: TextStyle(fontSize: 30, fontFamily: fontFamilyBold),
             ),
             alignment: Alignment(0, -0.33)),
-        _boxLevel(gradientBorderRadiusGreenDecoration(),
-            SvgPicture.asset(imagePath, height: 110), Alignment(0, -0.1), null),
-            Container(
+        _boxNotActive(
+            gradientBorderRadiusGreenDecoration(),
+            SvgPicture.asset(imagePath, height: 110),
+            Alignment(0, -0.1), "Данный функционал находится в разработке!"),
+        Container(
             child: Text(
               'Защита',
               style: TextStyle(fontSize: 30, fontFamily: fontFamilyBold),
@@ -144,7 +171,7 @@ class BodyWidgetState extends State<BodyWidget> {
             SvgPicture.asset(swordPic, height: 110),
             Alignment(0, 0.46),
             ((context) => PasswordAttackPage(getRandomPerson()))),
-             Container(
+        Container(
             child: Text(
               'Нападение',
               style: TextStyle(fontSize: 30, fontFamily: fontFamilyBold),
@@ -162,7 +189,6 @@ class BodyWidgetState extends State<BodyWidget> {
             setState(() {
               selectedWidgetMarker = WidgetMarker.level;
             });
-
           },
           child: Container(
             child: Stack(
