@@ -13,7 +13,7 @@ class App extends StatelessWidget {
     PageViewModel(
       pageColor: const Color(0xFF03A9F4),
       body: Text(
-        'Проходите уровни и узновайте что-то новое о кибербезопасности каждый день',
+        'Проходите уровни и узнавайте что-то новое о кибербезопасности каждый день',
       ),
       title: Text(''),
       textStyle:
@@ -82,7 +82,7 @@ class App extends StatelessWidget {
     PageViewModel(
       pageColor: const Color(0xFF8BC34A),
       body: Text(
-        'Изучайте компьютерную грамотность, криптографию и основы иноформативной безопасности',
+        'Изучайте компьютерную грамотность, криптографию и основы информационной безопасности',
         style: TextStyle(fontSize: 18),
       ),
       title: Text(''),
@@ -202,7 +202,7 @@ class App extends StatelessWidget {
     PageViewModel(
       pageColor: const Color(0xFF8BC34A),
       body: Text(
-        'Соревнуйся с друзьсями, зарабатывай BIGcoin\'ы, используйте подсказкиб делая свою жизнь в интернете безопаснее!',
+        'Соревнуйся с друзьсями, зарабатывай BIGcoin\'ы, используйте подсказки делая свою жизнь в интернете безопаснее!',
         style: TextStyle(fontSize: 18),
       ),
       title: Text(''),
