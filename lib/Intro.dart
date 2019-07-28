@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'levels/password/attack.dart';
+import 'levels/password/persons.dart';
 import 'models/person.dart';
 
 import 'package:intro_views_flutter/Models/page_view_model.dart';
@@ -234,8 +235,8 @@ class App extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => PasswordAttackPage(Person(name: 'Аня Иванова')),
-        ), //MaterialPageRoute
+          builder: (context) => PasswordAttackPage(getRandomPerson()),
+        ),
       );
     },
         pageButtonTextStyles: TextStyle(
