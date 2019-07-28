@@ -241,7 +241,7 @@ class BodyWidgetState extends State<BodyWidget> {
       children: <Widget>[
         Container(
           color: Colors.white,
-          height: 70,
+          height: 100,
           child: Row(
             children: <Widget>[
               Align(
